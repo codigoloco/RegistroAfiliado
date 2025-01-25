@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('correo')->unique();
+            $table->string('name');
+            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('clave_Usuario');
+            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -26,10 +26,7 @@ return new class extends Migration
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
-        Schema::create('permisos', function (Blueprint $table) {
-            $table->id();
-            $table->string("nombre");
-        });
+
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -38,18 +35,6 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
-        Schema::create('rol_permiso', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger("permiso_id")->unsigned();   
-            $table->foreign("permiso_id")->references("id")->on("permisos");
-        });
-        Schema::create('usuario_roles', function (Blueprint $table) {
-            $table->bigInteger('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users');
-            $table->bigInteger('rol_id')->unsigned();
-            $table->foreign('rol_id')->references('id')->on('rol_permiso');
-        });
-        
     }
 
     /**
@@ -60,8 +45,5 @@ return new class extends Migration
         Schema::dropIfExists('users');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
-        Schema::dropIfExists('usuario_roles');
-        Schema::dropIfExists('rol_permiso');
-        Schema::dropIfExists('permisos');
     }
 };
