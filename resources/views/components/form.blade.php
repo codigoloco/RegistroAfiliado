@@ -1,4 +1,4 @@
-@section('form')
+
 <div class="row beneficiario">
   <div class="row">
     <div class="col-2 mb-3 mt-5">
@@ -52,4 +52,3 @@
     </div>
   </div>
 </div>
-@endsection
