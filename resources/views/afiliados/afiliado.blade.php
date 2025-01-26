@@ -1,5 +1,4 @@
-@include("cuerpo.header")
-
+<x-header/>
 <div class="container">
   <div class="row">
     <div class="col-12">
@@ -22,7 +21,7 @@
                 </div>
               </div>
                 <div id="beneficiarios-container">
-                  @include('afiliados.extras.formulario')
+                  <x-form/>
                 </div>
                 <div class="footer">
                   <div class="col-12">
@@ -39,4 +38,4 @@
   </div>
 </div>
 
-@include("cuerpo.footer")
+<x-footer/>

@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-2 mb-3 mt-5">
         <label for="CedulaBeneficiario" class="form-label">Cedula Beneficiario</label>
-        <input type="number" class="form-control" id="CedulaBeneficiario" maxlength=9" placeholder="99.999.999" name="CedulaBeneficiario" required>
+        <input type="number" class="form-control" id="CedulaBeneficiario" maxlength=9 placeholder="99.999.999" name="CedulaBeneficiario" required>
     </div>
     <div class="col-2 mb-2 mt-5">
         <label for="RIF" class="form-label">Tipo</label>
