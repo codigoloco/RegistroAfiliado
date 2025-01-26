@@ -1,22 +1,23 @@
-document.querySelector('#AgregarBeneficiarios').addEventListener('click', function() {
-    let inputsExistentes= document.getElementsByClassName('beneficiario');    
-    if(inputsExistentes.length<6){
-        AddAfiliados()
+document.addEventListener("click", function(event){
+  //escucha todos los click en el documento
+  let idaccion=event.target.id;
+  let inputsExistentes= document.getElementsByClassName('beneficiario');    
+    // si el click realizado correspondea alguna de las acciones procede a ejecutar la accion
+    if(inputsExistentes.length!=1 && idaccion=="eliminarBeneficiarios"){
+      delAfiliados()
+    }else if(inputsExistentes.length<6 && idaccion=="AgregarBeneficiarios"){
+      AddAfiliados()
     }
-  });
-document.querySelector('#eliminarBeneficiarios').addEventListener('click', function() {
-    
-    let inputsExistentes= document.getElementsByClassName('beneficiario');    
-    
-    if(inputsExistentes.length!=1){
-        delAfiliados()
-    }
-  });
-
+  
+});
 
   const AddAfiliados =() =>{        
     let container = document.getElementById('beneficiarios-container');
     let beneficiario = container.querySelector('.beneficiario').cloneNode(true);
+    let inputs = beneficiario.querySelectorAll('input');
+    inputs.forEach(input => {
+        input.value = '';
+    });
     container.appendChild(beneficiario);
   }
 
@@ -27,6 +28,6 @@ document.querySelector('#eliminarBeneficiarios').addEventListener('click', funct
   }
 
 
-  document.querySelector('#CedulaTitular').addEventListener('key', function() {
-    alert("no esta registrado");
-  });
+  // document.querySelector('#CedulaTitular').addEventListener('key', function() {
+  //   alert("no esta registrado");
+  // });

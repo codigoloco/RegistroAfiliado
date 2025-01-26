@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\GetController;
 
 Auth::routes();
@@ -18,3 +19,7 @@ Route::get('/regClientes', [GetController::class, 'regClientes'])->name('regClie
 Route::get('/clientes',  [ClienteController::class, 'index'])->name('index');
 
 Route::post('/clientes',  [ClienteController::class, 'store'])->name('clientes.store');
+
+Route::get('/conf',  [ConfigController::class, 'config'])->name('config');
+
+route::post('/conf/create',  [ConfigController::class, 'store'])->name('config.store'); 

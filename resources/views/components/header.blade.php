@@ -25,9 +25,6 @@
       <a class="navbar-brand" href="{{ url('/') }}">
         {{ config('app.name', 'Laravel') }}
       </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-        <span class="navbar-toggler-icon"></span>
-      </button>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -62,7 +59,7 @@
               Configuracion
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Configuracion</a></li>
+              <li><a class="dropdown-item" href="{{ route('config')}}">Configuracion</a></li>
               <li><a class="dropdown-item" href="#">Reportes</a></li>
             </ul>
           </li>

@@ -16,5 +16,8 @@ class GetController extends Controller
     public function inicio() {
         return view('inicio');
     }
+    public function config() {
+        return view('configuracion.config');
+    }
     
 }
