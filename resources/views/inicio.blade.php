@@ -1,5 +1,8 @@
-<x-header/>
-<div class="container">
+@if (session('status'))
+<div class="alert alert-success" role="alert">
+    {{ session('status') }}
 </div>
+@else
+    @include('auth.login')
 
-<x-footer/>
+@endif

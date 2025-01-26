@@ -21,7 +21,7 @@
                 </div>
               </div>
                 <div id="beneficiarios-container">
-                  <x-form/>
+                @yield('form')
                 </div>
                 <div class="footer">
                   <div class="col-12">
