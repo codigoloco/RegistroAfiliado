@@ -46,8 +46,8 @@
               Clientes
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Registrar</a></li>
-              <li><a class="dropdown-item" href="#">Buscar</a></li>
+              <li><a class="dropdown-item" href="{{ route('regClientes') }}">Registrar</a></li>
+              <li><a class="dropdown-item" href="{{ route('index') }}">Buscar</a></li>
               <li><a class="dropdown-item" href="#">Editar/eliminar</a></li>
             </ul>
           </li>

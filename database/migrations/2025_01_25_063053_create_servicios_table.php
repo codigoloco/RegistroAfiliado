@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('servicios', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id();            
+            $table->string('nombre');
+            $table->string("maximoServicios");            
+
         });
     }
 
@@ -25,3 +27,4 @@ return new class extends Migration
         Schema::dropIfExists('servicios');
     }
 };
+

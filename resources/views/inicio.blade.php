@@ -4,8 +4,6 @@
   <div class="row">
     <div class="col-12">
       <h1>inicio</h1>
-      <button class="btn btn-primary">Boton
-
       </button>
     </div>
   </div>
