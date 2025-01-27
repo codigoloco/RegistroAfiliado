@@ -19,8 +19,7 @@
         </div>
         <div class="row mb-3">
           <div class="col-3">
-            <label for="nacionalidad" class="form-label">Nacionalidad</label>
-            <label for="Nacionalidad" class="form-label">Nacionalidad</label>
+            <label for="nacionalidad" class="form-label">Nacionalidad</label>            
             <select class="form-select" name="Nacionalidad" id="Nacionalidad">
               <option value="v" selected>Venezolano /a</option>
               <option value="E">Extranjero /a</option>

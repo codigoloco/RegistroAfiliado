@@ -4,5 +4,4 @@
 </div>
 @else
     @include('auth.login')
-
 @endif

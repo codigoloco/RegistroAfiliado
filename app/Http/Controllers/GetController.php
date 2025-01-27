@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\servicios;
 use Illuminate\Http\Request;
 
 class GetController extends Controller
 {
     //
+    public function inicio() {
+        return view('inicio');
+    }
     public function regClientes() {
         return view('clientes.regClientes');        
     }
     public function afiliados() {
-        return view('afiliados.afiliado');
+        $servicios=servicios::all();
+        return view('afiliados.afiliado', compact('servicios'));
     }
-    public function inicio() {
-        return view('inicio');
-    }
+
     public function config() {
         return view('configuracion.config');
     }

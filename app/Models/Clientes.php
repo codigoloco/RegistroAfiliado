@@ -14,6 +14,7 @@ class Clientes extends Model
     {
         return self::all();
     }
+    
     protected $fillable = [
         'nombre',
         'apellido',

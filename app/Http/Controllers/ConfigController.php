@@ -1,31 +1,36 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\configuracion;
+use App\Models\Servicio;
 use Illuminate\Http\Request;
 
 
 class ConfigController extends Controller
 {
     //
+    public function index()
+    {
+        $servicios = Servicio::all();  
+        return view('conf.servicios', compact("servicios"));
+    }
+    
     public function config() {
         return view('conf.config');
     }
 
-    public function index()
-    {
-        $clientes = configuracion::all();        
-        return view('clientes.index', compact('clientes'));
+    public function servicios() {
+        $servicios = Servicio::all();
+        return view('conf.servicios',compact("servicios"));
     }
+    
     public function store(Request $request)
     {
-        $configuracion=new configuracion();
-        $validateData=$request->validate([
-            'nombre'=> 'required|string|max:255',
-        ]);
-        configuracion::create($validateData);
-        return  redirect()->route('clientes.index')->with('success','Cliente registrado exitosamente.');
+        $configuracion=new Servicio();
+        $configuracion->nombre = $request->nombre;
+        $configuracion->maximoServicios = $request->cantidad;
+        $configuracion->save();     
+           
+        return  redirect()->route('config.servicios');
     }
 
 }
