@@ -30,7 +30,7 @@ class ClienteController extends Controller
             'users_id' => 'required|exists:users,id',
         ]);
 
-        Clientes::create($validatedData);
+        save($validatedData);
         return redirect()->route('clientes.index')->with('success', 'Cliente registrado exitosamente.');
     }
 }

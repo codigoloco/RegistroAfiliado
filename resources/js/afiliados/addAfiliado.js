@@ -1,11 +1,11 @@
 document.addEventListener("click", function(event){
   //escucha todos los click en el documento
-  let idaccion=event.target.id;
+  let idAccion=event.target.id;
   let inputsExistentes= document.getElementsByClassName('beneficiario');    
     // si el click realizado correspondea alguna de las acciones procede a ejecutar la accion
-    if(inputsExistentes.length!=1 && idaccion=="eliminarBeneficiarios"){
+    if(inputsExistentes.length!=1 && idAccion=="eliminarBeneficiarios"){
       delAfiliados()
-    }else if(inputsExistentes.length<6 && idaccion=="AgregarBeneficiarios"){
+    }else if(inputsExistentes.length<6 && idAccion=="AgregarBeneficiarios"){
       AddAfiliados()
     }
   

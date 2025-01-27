@@ -23,7 +23,7 @@ Route::post('/clientes',  [ClienteController::class, 'store'])->name('clientes.s
 
 //configuracion
 Route::get('/conf',  [ConfigController::class, 'config'])->name('config');
-
+//Vista de servicios
 Route::get('/conf/servicios',  [ConfigController::class, 'servicios'])->name('config.servicios');
-
+// Llamado del controllador para  insertar
 route::post('/conf/create',  [ConfigController::class, 'store'])->name('config.store'); 

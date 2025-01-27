@@ -17,9 +17,9 @@
                   <label for="tipoServicio" class="form-label">Tipo Servicio</label>
                   <select class="form-select" name="tipoServicio" id="tipoServicio">
                     <option selected>Default</option>
-                    @foreach($Servicio as $servi)
+                    {{-- @foreach($Servicio as $servi)
                     <option value="{{ $servicio->id }}">{{ $servi->nombre }}</option>
-                    @endforeach
+                    @endforeach--}}
                   </select>
                 </div>
               </div>
