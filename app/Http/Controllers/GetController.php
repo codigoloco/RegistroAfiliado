@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\servicios;
+use App\Models\parentescos;
+use App\Models\Afiliados;
+use App\Models\servicio;
 use Illuminate\Http\Request;
+
+use function Laravel\Prompts\form;
 
 class GetController extends Controller
 {
     //
-    public function index() {
-        $servicios=servicios::all();
-        return view('afiliados.afiliado', compact("servicios"));
+
+    public function regClientes()
+    {
+        return view('clientes.regClientes');
     }
-    public function regClientes() {
-        return view('clientes.regClientes');        
-    }
-    public function afiliados() {
-        
-        return view('afiliados.afiliado' );
-    }
+
+
 
     // public function config() {
     //     return view('configuracion.config');
     // }
-    
+
 }

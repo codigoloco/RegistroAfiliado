@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string("nombre");
             $table->string("detalle");
+            $table->boolean("Activo")->default(true);
+            $table->timestamps();
         });
         Schema::create('ejecutivos', function (Blueprint $table) {
             $table->id();
@@ -22,6 +24,7 @@ return new class extends Migration
             $table->string("apellido");
             $table->bigInteger("rolEjecutivo_id")->unsigned();
             $table->foreign("rolEjecutivo_id")->references("id")->on("rolesejecutivos");
+            $table->timestamps();
         });
 
     }

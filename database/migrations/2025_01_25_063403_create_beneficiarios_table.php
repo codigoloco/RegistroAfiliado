@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('parentescos', function (Blueprint $table) {
             $table->id();
             $table->string("nombre");
+            $table->boolean("Activo")->default(true);
+            $table->timestamps();
         });
         Schema::create('afiliados', function (Blueprint $table) {
             $table->id();
@@ -28,7 +30,7 @@ return new class extends Migration
             $table->foreign("users_id")->references("id")->on("users");
             $table->bigInteger("rolEjecutivo_id")->unsigned();
             $table->foreign("rolEjecutivo_id")->references("id")->on("rolesejecutivos");
-            $table->string("status")->default("Activo");
+            $table->string("status")->default(true);
         });
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id();  

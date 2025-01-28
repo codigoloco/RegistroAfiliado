@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
           <div class="col-12">
-            <form action="" method="POST">
+            <form action="{{ route('afiliados.store') }}" method="POST">
               @csrf
               <div class="row">
                 <div class="col-3 mb-2">
@@ -17,20 +17,75 @@
                   <label for="tipoServicio" class="form-label">Tipo Servicio</label>
                   <select class="form-select" name="tipoServicio" id="tipoServicio">
                     <option selected>Default</option>
-                    {{-- @foreach($Servicio as $servi)
-                    <option value="{{ $servicio->id }}">{{ $servi->nombre }}</option>
-                    @endforeach--}}
+                    @foreach($servicios as $servi)
+                    <option value="{{ $servi->id }}">{{ $servi->nombre }}</option>
+                    @endforeach
                   </select>
                 </div>
               </div>
               <div id="beneficiarios-container">
-                <x-form />
+                <div class="row beneficiario">
+                  <div class="row">
+                    <div class="col-2 mb-3 mt-5">
+                      <label for="CedulaBeneficiario" class="form-label">Cedula Beneficiario</label>
+                      <input type="text" class="form-control" id="CedulaBeneficiario" pattern="\d{1,9}" inputmode="numeric" maxlength="8" placeholder="99.999.999" name="CedulaBeneficiario" required>
+                    </div>
+                    <div class="col-2 mb-2 mt-5">
+                      <label for="RIF" class="form-label">Tipo</label>
+                      <select class="form-select" name="" id="">
+                        <option value="J" selected>J</option>
+                        <option value="G">G</option>
+                        <option value="E">E</option>
+                      </select>
+                    </div>
+                    <div class="col-2 mb-2 mt-5">
+                      <label for="RIF" class="form-label">RIF</label>
+                      <input type="text" class="form-control" maxlength="10" placeholder="99999999-9" pattern="\d{1,9}" inputmode="numeric" id="RIF" name="RIF" required>
+                    </div>
+                    <div class="col-3 mb-3 mt-5">
+                      <label for="Nombre" class="form-label">Nombres</label>
+                      <input type="text" class="form-control" placeholder="Nombre Completo" maxlength="40" id="Nombre" name="Nombre" required>
+                    </div>
+                    <div class="col-3 mb-3 mt-5">
+                      <label for="Apellido" class="form-label">Apellidos</label>
+                      <input type="text" class="form-control" placeholder="Apellido Completo" maxlength="40" id="Apellido" name="Apellido" required>
+                    </div>
+                  </div>
+
+
+                  <div class="row">
+                    <div class="col-2 mb-3">
+                      <label for="FechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                      <input type="date" class="form-control" id="FechaNacimiento" name="FechaNacimiento" required>
+                    </div>
+                    <div class="col-2 mb-3">
+                      <label for="Parentesco" class="form-label">Parentesco</label>
+                      <select class="form-select" name="Parentesco" id="Parentesco">
+                        <option selected>Seleccione</option>
+                        @foreach($parentescos as $paren)
+                        <option value="{{ $paren->id }}">{{ $paren->nombre }}</option>
+                        @endforeach
+                      </select>
+                    </div>
+                    <div class="col-2 mb-3">
+                      <label for="Nacionalidad" class="form-label">Nacionalidad</label>
+                      <select class="form-select" name="Nacionalidad" id="Nacionalidad">
+                        <option value="v" selected>Venezolano /a</option>
+                        <option value="E">Extranjero /a</option>
+                      </select>
+                    </div>
+                    <div class="col-3 mb-3">
+                      <label for="Telefono" class="form-label">Telefono</label>
+                      <input type="number" class="form-control" maxlength="12" pattern="\d{1,9}" inputmode="numeric" placeholder="412-000-00-00" id="Telefono" name="Telefono" required>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="row p-4">
                 <div class="col">
                   <div class="col-5 mb-1">
                     <label for="formFile" class="form-label">Adjuntar Contrato</label>
-                    <input class="form-control" type="file" id="formFile" accept="application/pdf" required>
+                    <input class="form-control" type="file" id="formFile" accept="application/pdf" name="formFile" required>
                   </div>
                 </div>
               </div>
