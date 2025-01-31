@@ -36,3 +36,11 @@ Route::get('/conf/parentesco',  [ConfigController::class, 'parentesco'])->name('
 Route::post('/conf/parentesco/create',  [ConfigController::class, 'storeParentesco'])->name('config.store.parentesco');
 // Llamado del controllador para  insertar
 route::post('/conf/create',  [ConfigController::class, 'store'])->name('config.store');
+//Ejecutivos
+Route::get('/conf/ejecutivos',  [ConfigController::class, 'ejecutivos'])->name('config.ejecutivos');
+//roles ejecutivos
+Route::get('/conf/rolesEjecutivos',  [ConfigController::class, 'rolesEjecutivos'])->name('config.rolesEjecutivos');
+//crear ejecutivo
+Route::post('/conf/ejecutivos/create',  [ConfigController::class, 'storeParentesco'])->name('config.store.ejecutivos');
+//crear Rol
+Route::post('/conf/rolesEjecutivos/create',  [ConfigController::class, 'storeParentesco'])->name('config.store.rolesEjecutivos');
