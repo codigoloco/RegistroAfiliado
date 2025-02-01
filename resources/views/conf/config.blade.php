@@ -30,7 +30,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"> Ejecutivos </h5>
-                <a class="btn btn-secondary" href="{{ route('config.servicios') }}">Ingresar</a>
+                <a class="btn btn-secondary" href="{{ route('config.ejecutivos') }}">Ingresar</a>
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"> Roles Ejectivos </h5>
-                <a class="btn btn-secondary" href="{{ route('config.servicios') }}">Ingresar</a>
+                <a class="btn btn-secondary" href="{{ route('config.rolesEjecutivos') }}">Ingresar</a>
             </div>
         </div>
     </div>

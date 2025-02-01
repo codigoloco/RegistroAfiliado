@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ejecutivos;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
 use App\Models\parentescos;
-
+use App\Models\roles_ejecutivos;
 
 class ConfigController extends Controller
 {
@@ -48,6 +49,16 @@ class ConfigController extends Controller
         $configuracion->save();
 
         return  redirect()->route('config.servicios');
+    }
+    public function ejecutivos()
+    {
+        $ejecutivos = ejecutivos::all();
+        return view('conf.ejecutivos', compact("ejecutivos"));
+    }
+    public function rolesEjecutivos()
+    {
+        $rolesEjecutivos = roles_ejecutivos::all();
+        return view('conf.ejecutivos', compact("rolesEjecutivos"));
     }
 
 }

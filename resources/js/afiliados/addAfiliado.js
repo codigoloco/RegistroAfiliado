@@ -8,7 +8,10 @@ document.addEventListener("click", function (event) {
   } else if (inputsExistentes.length < 6 && idAccion == "AgregarBeneficiarios") {
     AddAfiliados()
   }
+  if(idAccion=="ActualizarAfiliados"){
+    OBtenerAFiliados();
 
+  }
 });
 
 const AddAfiliados = () => {
@@ -27,10 +30,12 @@ const delAfiliados = () => {
   container.removeChild(beneficiario);
 }
 
-fetch('/afiliados/all') // Asegúrate de que la ruta coincida con la definida en Laravel
+const OBtenerAFiliados=()=>{
+  fetch('/afiliados/all') // Asegúrate de que la ruta coincida con la definida en Laravel
   .then(response => response.json())
   .then(data => {
     console.log(data); // Muestra los datos en la consola
     // Aquí puedes procesar los datos para mostrarlos en tu interfaz
   })
   .catch(error => console.error('Error:', error));
+}

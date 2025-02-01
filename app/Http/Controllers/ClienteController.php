@@ -18,7 +18,7 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $cliente = new Clientes();
-        $id = Auth::id();
+        
         $cliente->nombre = $request->nombre;
         $cliente->apellido = $request->apellido;
         $cliente->nacionalidad = "VENEZOLANO";
@@ -30,7 +30,7 @@ class ClienteController extends Controller
         $cliente->empresa = $request->empresa;
         $cliente->status = $request->status;
         $cliente->direccion = $request->direccion;
-        $cliente->users_id =$id;
+        $cliente->users_id = Auth::id();
         
         $cliente->save();
 

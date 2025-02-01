@@ -17,12 +17,12 @@ Route::get('/afiliados',  [AfiliadosController::class, 'afiliados'])->name('afil
 //registrar afiliados
 route::post('/afiliados/create',  [AfiliadosController::class, 'store'])->name('afiliados.store');
 
-Route::get('/afiliados/all',  [AfiliadosController::class, 'index']);
+Route::get('/BuscarAfiliados',  [AfiliadosController::class, 'index'])->name("buscar.afiliados");
 
 //clientes
 Route::get('/regClientes', [GetController::class, 'regClientes'])->name('regClientes');
 
-Route::get('/clientes',  [ClienteController::class, 'index'])->name('index');
+Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clientes');
 
 Route::post('/clientes',  [ClienteController::class, 'store'])->name('clientes.store');
 

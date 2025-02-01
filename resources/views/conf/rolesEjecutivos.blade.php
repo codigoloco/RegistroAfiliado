@@ -1,6 +1,6 @@
 <x-header />
 <div class="row m-2 p-2">
-    <h1>Agregar Servicios</h1>
+    <h1>Agregar rolesEjecutivos</h1>
 </div>
 <form action="{{ route('config.store') }}" method="POST">
     @csrf
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($servicios as $servicio)
+                    @foreach($rolesEjecutivos as $rol)
                     <tr>
                         <td>{{ $rol->id }}</td>
                         <td>{{ $rol->nombre }}</td>

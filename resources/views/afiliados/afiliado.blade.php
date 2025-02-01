@@ -93,10 +93,22 @@
                 <div class="col-12">
                   <button type="button" class="btn btn-secondary" id="AgregarBeneficiarios">+</button>
                   <button type="button" class="btn btn-secondary" id="eliminarBeneficiarios">-</button>
+                  <button id="ActualizarAfiliados" type='button' class="btn btn-primary">ACtualizar</button>
                   <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
               </div>
             </form>
+            @if(session('success'))
+            <div class="alert alert-success">
+              {{ session('success') }}
+            </div>
+            @endif
+
+            @if(session('error'))
+            <div class="alert alert-danger">
+              {{ session('error') }}
+            </div>
+            @endif
           </div>
         </div>
       </div>

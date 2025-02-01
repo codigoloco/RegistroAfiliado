@@ -40,8 +40,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ route('afiliados') }}">Registrar</a></li>
-              <li><a class="dropdown-item" href="#">Buscar</a></li>
-              <li><a class="dropdown-item" href="#">Editar</a></li>
+              <li><a class="dropdown-item" href="{{ route('buscar.afiliados') }}">Gestionar Afiliaciones</a></li>              
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -50,8 +49,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ route('regClientes') }}">Registrar</a></li>
-              <li><a class="dropdown-item" href="{{ route('index') }}">Buscar</a></li>
-              <li><a class="dropdown-item" href="#">Editar/eliminar</a></li>
+              <li><a class="dropdown-item" href="{{ route('buscar.Clientes') }}">Gestionar Clientes</a></li>              
             </ul>
           </li>
           <li class="nav-item dropdown">

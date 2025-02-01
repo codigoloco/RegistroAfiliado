@@ -18,45 +18,36 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create('afiliados', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger("clientes_id")->unsigned();
-            $table->foreign("clientes_id")->references("id")->on("clientes");
-            $table->bigInteger("servicio_id")->unsigned();
-            $table->foreign("servicio_id")->references("id")->on("servicios");
-            $table->string("nro_afiliado");
-            $table->timestamps();
-            $table->date("fecha_renovacion");
-            $table->bigInteger("users_id")->unsigned();
-            $table->foreign("users_id")->references("id")->on("users");
-            $table->bigInteger("rolEjecutivo_id")->unsigned();
-            $table->foreign("rolEjecutivo_id")->references("id")->on("rolesejecutivos");
-            $table->string("status")->default(true);
+            $table->id(); // Columna autoincremental para el ID del afiliado
+            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Clave foránea a la tabla clientes
+            $table->foreignId('servicio_id')->constrained('servicios')->onDelete('cascade'); // Clave foránea a la tabla servicios
+            $table->string('nro_afiliado')->unique(); // Número de afiliado (único)
+            $table->date('fecha_renovacion'); // Fecha de renovación
+            $table->foreignId('users_id')->constrained('users')->onDelete('cascade'); // Clave foránea a la tabla users
+            $table->foreignId('ejecutivos_id')->constrained('ejecutivos')->onDelete('cascade'); // Clave foránea a la tabla rolesejecutivos
+            $table->boolean('status')->default(true); // Estado del afiliado (booleano)
+            $table->timestamps(); // Columnas created_at y updated_at
         });
         Schema::create('beneficiarios', function (Blueprint $table) {
-            $table->id();  
-            $table->boolean("activo")->default(true);
-            $table->string("nombre");
-            $table->string("apellido");
-            $table->string("nacionalidad");
-            $table->string("cedula");
-            $table->string("rif");
-            $table->date("fechaNacimiento");
-            $table->string("direccion");
-            $table->integer("telefono");
-            $table->string("celular");
-            $table->bigInteger("parentescos_id")->unsigned();
-            $table->foreign("parentescos_id")->references("id")->on("parentescos");
-            $table->bigInteger("users_id")->unsigned();
-            $table->foreign("users_id")->references("id")->on("users");
-            $table->timestamps();
-            $table->string("empresa");
-            $table->boolean("convenio")->default(false);
-            $table->bigInteger("clientes_id")->unsigned();
-            $table->foreign("clientes_id")->references("id")->on("clientes");
-            $table->bigInteger("afiliados_id")->unsigned();
-            $table->foreign("afiliados_id")->references("id")->on("afiliados");
+            $table->id(); // Columna autoincremental para el ID
+            $table->boolean('activo')->default(true); // Estado activo/inactivo (booleano)
+            $table->string('nombre'); // Nombre
+            $table->string('apellido'); // Apellido
+            $table->string('nacionalidad'); // Nacionalidad
+            $table->string('cedula')->unique(); // Cédula (única)
+            $table->string('rif')->unique(); // RIF (único)
+            $table->date('fechaNacimiento'); // Fecha de nacimiento
+            $table->string('direccion'); // Dirección
+            $table->string('telefono'); // Teléfono (mejor como string para incluir códigos de área)
+            $table->string('celular'); // Celular (mejor como string para incluir códigos de área)
+            $table->foreignId('parentescos_id')->constrained('parentescos')->onDelete('cascade'); // Clave foránea a la tabla parentescos
+            $table->foreignId('users_id')->constrained('users')->onDelete('cascade'); // Clave foránea a la tabla users
+            $table->timestamps(); // Columnas created_at y updated_at
+            $table->string('empresa'); // Empresa
+            $table->boolean('convenio')->default(false); // Convenio (booleano)
+            $table->foreignId('clientes_id')->constrained('clientes')->onDelete('cascade'); // Clave foránea a la tabla clientes
+            $table->foreignId('afiliados_id')->constrained('afiliados')->onDelete('cascade'); // Clave foránea a la tabla afiliados
         });
-        
     }
 
     /**
