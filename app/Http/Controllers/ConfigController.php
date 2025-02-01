@@ -6,7 +6,7 @@ use App\Models\ejecutivos;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
 use App\Models\parentescos;
-use App\Models\roles_ejecutivos;
+use App\Models\rolesejecutivos;
 
 class ConfigController extends Controller
 {
@@ -22,43 +22,27 @@ class ConfigController extends Controller
         return view('conf.config');
     }
 
-    public function servicios()
-    {
-        $servicios = Servicio::all();
-        return view('conf.servicios', compact("servicios"));
-    }
-
-    public function store(Request $request)
-    {
-        $configuracion = new Servicio();
-        $configuracion->nombre = $request->nombre;
-        $configuracion->maximoServicios = $request->cantidad;
-        $configuracion->save();
-
-        return  redirect()->route('config.servicios');
-    }
-    public function parentesco()
-    {
-        $parentescos = parentescos::all();
-        return view('conf.parentescos', compact("parentescos"));
-    }
-    public function storeParentesco(Request $request)
-    {
-        $configuracion = new parentescos();
-        $configuracion->nombre = $request->nombre;
-        $configuracion->save();
-
-        return  redirect()->route('config.servicios');
-    }
-    public function ejecutivos()
-    {
-        $ejecutivos = ejecutivos::all();
-        return view('conf.ejecutivos', compact("ejecutivos"));
-    }
+    
+    
+    
     public function rolesEjecutivos()
     {
-        $rolesEjecutivos = roles_ejecutivos::all();
-        return view('conf.ejecutivos', compact("rolesEjecutivos"));
+        $rolesEjecutivos = rolesejecutivos::all();
+        return view('conf.rolesEjecutivos', compact("rolesEjecutivos"));
     }
 
+    public function storeRolesEjecutivos(Request $request)
+    {
+        try {
+            $configuracion = new rolesejecutivos();
+            $configuracion->nombre = $request->nombre;
+            $configuracion->detalle = $request->detalle;
+
+            $configuracion->save();
+        } catch (\Throwable $th) {
+            return redirect()->back()
+                ->with('error', 'Ocurrió un error al guardar el rol: ' . $th->getMessage());
+        }
+        return  redirect()->route('config.rolesEjecutivos')->with('success', 'rol creado correctamente.');
+    }
 }

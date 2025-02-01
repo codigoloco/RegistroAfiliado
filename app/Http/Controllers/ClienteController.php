@@ -15,7 +15,7 @@ class ClienteController extends Controller
         return view('clientes.index', compact('clientes'));
     }
 
-    public function store(Request $request)
+    public function storeClientes(Request $request)
     {
         $cliente = new Clientes();
         
@@ -36,6 +36,6 @@ class ClienteController extends Controller
 
 
         // save($validatedData);
-        return redirect()->route('index')->with('success', 'Cliente registrado exitosamente.');
+        return redirect()->route('buscar.Clientes')->with('success', 'Cliente registrado exitosamente.');
     }
 }

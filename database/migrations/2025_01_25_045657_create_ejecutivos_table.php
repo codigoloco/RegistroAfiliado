@@ -19,12 +19,11 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create('ejecutivos', function (Blueprint $table) {
-            $table->id();
-            $table->string("nombre");
-            $table->string("apellido");
-            $table->bigInteger("rolEjecutivo_id")->unsigned();
-            $table->foreign("rolEjecutivo_id")->references("id")->on("rolesejecutivos");
-            $table->timestamps();
+            $table->id(); // Columna autoincremental para el ID
+            $table->string('nombre'); // Nombre del ejecutivo
+            $table->string('apellido'); // Apellido del ejecutivo
+            $table->foreignId('rolEjecutivo_id')->constrained('rolesejecutivos')->onDelete('cascade'); // Clave foránea a la tabla rolesejecutivos
+            $table->timestamps(); // Columnas created_at y updated_at
         });
 
     }

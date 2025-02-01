@@ -17,15 +17,22 @@
                 <label for="nombre">Nombre del ejecutivo</label>
             </div>
         </div>
-        <div class="col-md-3">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
-                <label for="nombre">rol del ejecutivo</label>
-            </div>
-        </div>
+
+
         <div class="col-md-3 m-2 g-2">
             <button class="btn btn-primary" type="submit">Guardar</button>
             <button class="btn btn-secondary" type="reset">Limpiar</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 mb-3">
+            <label for="rolEjecutivo" class="form-label">Rol Ejecutivo</label>
+            <select class="form-select" name="rolEjecutivo" id="rolEjecutivo" required>
+                <option selected>Seleccione</option>
+                @foreach($rolesEjecutivos as $rol)
+                <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="row">
@@ -33,7 +40,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>ID Rol</th>
+                        <th>ID</th>
                         <th>nombre</th>
                         <th>detalle</th>
                         <!-- Agrega más columnas según sea necesario -->
@@ -43,15 +50,26 @@
                     @foreach($ejecutivos as $ejecutivo)
                     <tr>
                         <td>{{ $ejecutivo->id }}</td>
-                        <td>{{ $rejecutivool->nombre }}</td>
-                        <td>{{ $ejecutivo->detalle }}</td>                        
+                        <td>{{ $ejecutivo->nombre }}</td>
+                        <td>{{ $ejecutivo->detalle }}</td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-        
+
         </div>
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
 
     </div>
 </form>

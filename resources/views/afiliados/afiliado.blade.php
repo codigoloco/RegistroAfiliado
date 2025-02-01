@@ -22,6 +22,18 @@
                     @endforeach
                   </select>
                 </div>
+                <div class="col-3 mb-2">
+                  <label for="ejecutivo" class="form-label">ejecutivo</label>
+                  <select class="form-select" name="ejecutivo" id="ejecutivo">
+                    <option selected>Default</option>
+                    @foreach($ejecutivos as $ejecutivo)
+                    <option value="{{ $ejecutivo->id }}">{{$ejecutivo->id}}-{{ $ejecutivo->nombre }}</option>
+                    @endforeach
+                  </select>
+                </div>
+                <div class="col-1 g-4"><button type="button" class="btn btn-secondary" id="AgregarBeneficiarios">+</button></div>
+                <div class="col-1 g-4"><button type="button" class="btn btn-secondary" id="eliminarBeneficiarios">-</button></div>
+                <div class="col-1 g-4"> <button id="ActualizarAfiliados" type='button' class="btn btn-primary">Actualizar</button></div>
               </div>
               <div id="beneficiarios-container">
                 <div class="row beneficiario">
@@ -92,8 +104,7 @@
               <div class="footer">
                 <div class="col-12">
                   <button type="button" class="btn btn-secondary" id="AgregarBeneficiarios">+</button>
-                  <button type="button" class="btn btn-secondary" id="eliminarBeneficiarios">-</button>
-                  <button id="ActualizarAfiliados" type='button' class="btn btn-primary">ACtualizar</button>
+                  <button type="button" class="btn btn-secondary" id="eliminarBeneficiarios">-</button>                  
                   <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
               </div>

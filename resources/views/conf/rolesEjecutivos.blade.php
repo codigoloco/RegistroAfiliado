@@ -2,19 +2,19 @@
 <div class="row m-2 p-2">
     <h1>Agregar rolesEjecutivos</h1>
 </div>
-<form action="{{ route('config.store') }}" method="POST">
+<form action="{{ route('config.store.rolesEjecutivos') }}" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-3">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="detalle" name="detalle" placeholder="detalle" required>
-                <label for="detalle">descripcion del rol</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                <label for="nombre">Nombre del rol</label>
             </div>
         </div>
         <div class="col-md-3">
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
-                <label for="nombre">Nombre</label>
+                <input type="text" class="form-control" id="detalle" name="detalle" placeholder="detalle" required>
+                <label for="detalle">descripcion del rol</label>
             </div>
         </div>
         <div class="col-md-3 m-2 g-2">
@@ -44,8 +44,19 @@
                     @endforeach
                 </tbody>
             </table>
-        
+
         </div>
+        @if(session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        @if(session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+        @endif
 
     </div>
 </form>

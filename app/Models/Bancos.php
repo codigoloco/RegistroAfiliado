@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class roles_ejecutivos extends Model
+class Bancos extends Model
 {
     //
 }
