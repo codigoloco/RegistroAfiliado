@@ -18,7 +18,7 @@ class ParentescosController extends Controller
         $configuracion->nombre = $request->nombre;
         $configuracion->save();
 
-        return  redirect()->route('config.servicios');
+        return  redirect()->route('config.parentesco');
     }
     public function eliminarServicio($id)
     {

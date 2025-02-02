@@ -34,7 +34,7 @@
                         <td>{{ $servicio->id }}</td>
                         <td>{{ $servicio->nombre }}</td>
                         <td>                             
-                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/conf/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                            <button value="{{$servicio->id}}" type="button" name="EliminarServicio" data-modulo="/parentesco/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
                         </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>

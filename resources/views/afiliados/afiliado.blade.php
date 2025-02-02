@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-3 mb-2">
                   <label for="tipoServicio" class="form-label">Tipo Servicio</label>
-                  <select class="form-select" name="tipoServicio" id="tipoServicio">
+                  <select class="form-select" name="tipoServicio" id="tipoServicio" require>
                     <option selected>Default</option>
                     @foreach($servicios as $servi)
                     <option value="{{ $servi->id }}">{{ $servi->nombre }}</option>

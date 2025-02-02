@@ -10,6 +10,7 @@ use App\Models\servicio;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
+use function Laravel\Prompts\error;
 
 class AfiliadosController extends Controller
 {
@@ -30,22 +31,27 @@ class AfiliadosController extends Controller
     {
         
         try {
+            
             $fechaActual = Carbon::now();
             $fechaRenovacion = $fechaActual->addYear();      
             $fechaRenovacion=$fechaRenovacion->format('Y-m-d');      
-            $afiliado = new afiliados;
+            $afiliado = new afiliados;            
             $afiliado->clientes_id = 1;
             $afiliado->servicio_id = $request->tipoServicio;
-            $afiliado->nro_afiliado = $request->CedulaTitular;
+            $afiliado->nro_afiliado = $request->tipoServicioC .'-'. $request->edulaTitular;
             $afiliado->fecha_renovacion = $fechaRenovacion;
             $afiliado->users_id  = auth::id();;
-            $afiliado->rolEjecutivo_id = $request->ejecutivo;
+            $afiliado->ejecutivos_id  = $request->ejecutivo;
             $afiliado->status = 1;
+            
             $afiliado->save();
-        } catch (\Throwable $th) {
-            return redirect()->back()
-                ->with('error', 'Ocurrió un error al guardar el afiliado: ' . $th->getMessage());
+        } catch (\Throwable  $th ) {
+            if($th->getCode() ==23000){
+                return redirect()->back()
+                ->with('error', 'Ocurrió un error al guardar el afiliado: Ya existe un registro similar en el sistema  Verifique la cedula del titular');
+            }
+            
         }
-        return  redirect()->route('config.rolesEjecutivos')->with('success', 'Afiliado creado correctamente.');
+        return  redirect()->route('afiliados')->with('success', 'Afiliado creado correctamente.');
     }
 }
