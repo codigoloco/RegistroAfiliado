@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('servicios', function (Blueprint $table) {
             $table->id();            
             $table->string('nombre');
-            $table->string("maximoServicios");    
+            $table->integer('maximoServicios');    
+            $table->boolean('status')->nullable()->default(1); 
             $table->timestamps();        
-
         });
     }
 

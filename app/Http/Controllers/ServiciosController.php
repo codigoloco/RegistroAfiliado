@@ -21,6 +21,7 @@ class ServiciosController extends Controller
 
     public function storeServicios(Request $request)
     {
+       
         $configuracion = new Servicio();
         $configuracion->nombre = $request->nombre;
         $configuracion->maximoServicios = $request->cantidad;
@@ -30,7 +31,6 @@ class ServiciosController extends Controller
     }
     public function eliminarServicio($id)
     {
-
         try {
             $servicio = Servicio::findOrFail($id);
             $servicio->delete();
@@ -48,19 +48,31 @@ class ServiciosController extends Controller
 
     // Método para procesar la actualización
     public function update(Request $request, $id)
-    {
-        $servicio = Servicio::findOrFail($id); // Obtener el servicio a actualizar
-
+    { try{
+        
+        $servicio = Servicio::findOrFail($id); // Obtener el servicio a actualizar        
         // Validar los datos del formulario
+        
         $request->validate([
-            'nombre' => 'required|string|max:255', // Ejemplo de validación
+            'nombre' => 'required|string|max:255', // Ejemplo de validación            
+            'maximoServicios' =>'required|integer|max:255',
             // Agrega más reglas de validación según sea necesario
         ]);
-
+        $status = $request->has('status') ? '1' : '0';
         // Actualizar el servicio
-        $servicio->update($request->all());
+        
 
+        $servicio->update([
+            'nombre' => $request->nombre,
+            'maximoServicios' => $request->maximoServicios,
+            'status' => $status, // Usamos el valor convertido
+        ]);
+        
         // Redireccionar con un mensaje de éxito
-        return redirect()->route('config.servicios')->with('success', 'Servicio actualizado correctamente');
+        return redirect()->route('config.servicios')->with('success', 'Servicio actualizado correctamente');}
+        catch(\Throwable $th){
+            return redirect()->back()
+                ->with('error', 'Ocurrió un error al actualizar el servicio: ' . $th->getMessage());
+        }
     }
 }

@@ -23,6 +23,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Parentesco</th>
+                        <th>Acciones</th>
+
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                 </thead>
@@ -31,6 +33,9 @@
                     <tr>
                         <td>{{ $servicio->id }}</td>
                         <td>{{ $servicio->nombre }}</td>
+                        <td>                             
+                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/conf/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                        </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                     @endforeach

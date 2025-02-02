@@ -20,4 +20,15 @@ class ParentescosController extends Controller
 
         return  redirect()->route('config.servicios');
     }
+    public function eliminarServicio($id)
+    {
+        try {
+            $servicio = parentescos::findOrFail($id);
+            $servicio->delete();
+            return response()->json(['message' => 'Servicio eliminado correctamente']);
+        } catch(\Throwable $th){
+            return redirect()->back()
+                ->with('error', 'Ocurrió un error al actualizar el servicio: ' . $th->getMessage());
+        }
+    }
 }

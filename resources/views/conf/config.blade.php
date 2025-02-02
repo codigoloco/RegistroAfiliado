@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"> Usuarios</h5>
-                <a class="btn btn-secondary" href="{{ route('config.servicios') }}">Ingresar</a>
+                <a class="btn btn-secondary" href="{{ route('usuarios') }}">Ingresar</a>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"> Auditoria </h5>
-                <a class="btn btn-secondary" href="{{ route('config.servicios') }}">Ingresar</a>
+                <a class="btn btn-secondary" href="{{ route('auditoria') }}">Ingresar</a>
             </div>
         </div>
     </div>

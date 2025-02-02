@@ -10,7 +10,9 @@ class rolesejecutivos extends Model
 
     protected $fillable = [
         'nombre',
-        'detalle'
+        'detalle',
+        'rolEjecutivo_id' ,
+        'status'
        
     ];
 }

@@ -22,27 +22,4 @@ class ConfigController extends Controller
         return view('conf.config');
     }
 
-    
-    
-    
-    public function rolesEjecutivos()
-    {
-        $rolesEjecutivos = rolesejecutivos::all();
-        return view('conf.rolesEjecutivos', compact("rolesEjecutivos"));
-    }
-
-    public function storeRolesEjecutivos(Request $request)
-    {
-        try {
-            $configuracion = new rolesejecutivos();
-            $configuracion->nombre = $request->nombre;
-            $configuracion->detalle = $request->detalle;
-
-            $configuracion->save();
-        } catch (\Throwable $th) {
-            return redirect()->back()
-                ->with('error', 'Ocurrió un error al guardar el rol: ' . $th->getMessage());
-        }
-        return  redirect()->route('config.rolesEjecutivos')->with('success', 'rol creado correctamente.');
-    }
 }
