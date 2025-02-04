@@ -25,7 +25,7 @@ class RolesEjecutivosController extends Controller
             return redirect()->back()
                 ->with('error', 'Ocurrió un error al guardar el rol: ' . $th->getMessage());
         }
-        return  redirect()->route('config.rolesEjecutivos')->with('success', 'rol creado correctamente.');
+        return  redirect()->route('rolesEjecutivos')->with('success', 'rol creado correctamente.');
     }
     
     public function edit($id)

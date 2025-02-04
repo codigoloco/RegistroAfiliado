@@ -9,15 +9,13 @@
             <form action="{{ route('afiliados.store') }}" method="POST">
               @csrf
               <div class="row">
-                <div class="col-3 mb-2 g-3">
-                  <div class="form-floating">
-                    <input type="text" placeholder="99.999.999" maxlength="8" pattern="\d{1,9}" inputmode="numeric" class="form-control" id="CedulaTitular" name="CedulaTitular" required>
-                    <label for="CedulaTitular" >Cedula Titular</label>
-                  </div>
+                <div class="col-3 mb-2">
+                  <label for="CedulaTitular" class="form-label">Cedula Titular</label>
+                  <input type="text" placeholder="99.999.999" maxlength="8" pattern="\d{1,9}" inputmode="numeric" class="form-control" id="CedulaTitular" name="CedulaTitular" required>
                 </div>
                 <div class="col-3 mb-2">
                   <label for="tipoServicio" class="form-label">Tipo Servicio</label>
-                  <select class="form-select" name="tipoServicio" id="tipoServicio" require>
+                  <select class="form-select" name="tipoServicio" id="tipoServicio">
                     <option selected>Default</option>
                     @foreach($servicios as $servi)
                     <option value="{{ $servi->id }}">{{ $servi->nombre }}</option>
@@ -106,7 +104,7 @@
               <div class="footer">
                 <div class="col-12">
                   <button type="button" class="btn btn-secondary" id="AgregarBeneficiarios">+</button>
-                  <button type="button" class="btn btn-secondary" id="eliminarBeneficiarios">-</button>
+                  <button type="button" class="btn btn-secondary" id="eliminarBeneficiarios">-</button>                  
                   <button type="submit" class="btn btn-primary">Registrar</button>
                 </div>
               </div>

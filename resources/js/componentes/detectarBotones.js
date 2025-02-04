@@ -84,6 +84,7 @@ export class opciones {
             .catch(error => {
                 console.error('Hubo un error al eliminar el servicio:', error);
                 alert('No se pudo eliminar el servicio');
+                
             });
     }
     editar=(id,modulo)=>{

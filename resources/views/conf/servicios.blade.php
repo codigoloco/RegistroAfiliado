@@ -1,6 +1,6 @@
 <x-header />
 <div class="row m-2 p-2">
-    <h1>Agregar Servicios</h1>
+    <h1>Agregar Servicios</h1>    
 </div>
 <form action="{{ route('config.store') }}" method="POST">
     @csrf
@@ -22,7 +22,7 @@
     <div class="row">
         <div class="offset-md-4">
             <button class="btn btn-primary m-2 p-2" type="submit">Guardar</button>
-            <button class="btn btn-secondary m-2 p-2" type="reset">Limpiar</button>
+            <a href="{{ route('config') }}" class="btn btn-secondary">Volver</a>
         </div>
     </div>
     <div class="row">
@@ -48,7 +48,7 @@
                         <td>{{ $servicio->status == 0 ?'Inactivo':'Activo'}} </td>
 
                         <td> <a value="{{$servicio->id}}" type="button" name="EditarServicio" href="{{ route('servicios.editar', $servicio->id) }}" id="EditarServicio" class="btn btn-primary ">Editar</a>
-                            <button value="{{$servicio->id}}" type="button" name="EliminarServicio" data-modulo="/conf/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                            <button value="{{$servicio->id}}" type="button" name="EliminarServicio" data-modulo="/servicios/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>                            
                         </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>

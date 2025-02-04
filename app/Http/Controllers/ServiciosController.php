@@ -34,6 +34,7 @@ class ServiciosController extends Controller
         try {
             $servicio = Servicio::findOrFail($id);
             $servicio->delete();
+            
             return response()->json(['message' => 'Servicio eliminado correctamente']);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Servicio no encontrado'], 404);

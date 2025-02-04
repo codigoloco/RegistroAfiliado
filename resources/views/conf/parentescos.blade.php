@@ -13,7 +13,7 @@
         </div>
         <div class="col-md-3 m-2 g-2">
             <button class="btn btn-primary" type="submit">Guardar</button>
-            <button class="btn btn-secondary" type="reset">Limpiar</button>
+            <a href="{{ route('config') }}" class="btn btn-secondary">Volver</a>
         </div>
     </div>
     <div class="row">

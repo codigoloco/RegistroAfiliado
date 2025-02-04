@@ -41,7 +41,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title"> Roles Ejectivos </h5>
-                <a class="btn btn-secondary" href="{{ route('config.rolesEjecutivos') }}">Ingresar</a>
+                <a class="btn btn-secondary" href="{{ route('rolesEjecutivos') }}">Ingresar</a>
             </div>
         </div>
     </div>

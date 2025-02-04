@@ -24,11 +24,11 @@ route::post('/afiliados/create',  [AfiliadosController::class, 'storeAFiliados']
 //BuscarAfiliados
 Route::get('/BuscarAfiliados',  [AfiliadosController::class, 'index'])->name("buscar.afiliados")->middleware('auth');
 //Eliminar servicio
-Route::delete('/conf/delete/{id}',  [AfiliadosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
+Route::delete('/AFiliados/delete/{id}',  [AfiliadosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/servicios/{id}/editar', [AfiliadosController::class, 'edit'])->name('servicios.editar')->middleware('auth');
+Route::get('/AFiliados/{id}/editar', [AfiliadosController::class, 'edit'])->name('servicios.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
-Route::put('/servicios/{id}', [AfiliadosController::class, 'update'])->name('servicios.actualizar')->middleware('auth');
+Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('servicios.actualizar')->middleware('auth');
 
 //clientes
 //Registro
@@ -38,11 +38,11 @@ Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clie
 //Registrar Clientes
 Route::post('/clientes',  [ClienteController::class, 'storeClientes'])->name('clientes.store')->middleware('auth');
 //Eliminar servicio
-Route::delete('/conf/delete/{id}',  [ClienteController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
+Route::delete('/clientes/delete/{id}',  [ClienteController::class, 'eliminarServicio'])->name('clientes.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/servicios/{id}/editar', [ClienteController::class, 'edit'])->name('servicios.editar')->middleware('auth');
+Route::get('/clientes/{id}/editar', [ClienteController::class, 'edit'])->name('clientes.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
-Route::put('/servicios/{id}', [ClienteController::class, 'update'])->name('servicios.actualizar')->middleware('auth');
+Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.actualizar')->middleware('auth');
 
 //configuracion
 //Vista Configuraciones
@@ -54,7 +54,7 @@ Route::get('/conf/servicios',  [ServiciosController::class, 'servicios'])->name(
 //Crear Servicios
 Route::post('/conf/create',  [ServiciosController::class, 'storeServicios'])->name('config.store')->middleware('auth');
 //Eliminar servicio
-Route::delete('/conf/delete/{id}',  [ServiciosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
+Route::delete('/servicios/delete/{id}',  [ServiciosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
 //VistaEdicion
 Route::get('/servicios/{id}/editar', [ServiciosController::class, 'edit'])->name('servicios.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
@@ -67,7 +67,7 @@ Route::get('/conf/parentesco',  [ParentescosController::class, 'parentesco'])->n
 Route::post('/conf/parentesco/create',  [ParentescosController::class, 'storeParentesco'])->name('config.store.parentesco')->middleware('auth');
 // Llamado del controllador para  insertar
 //Eliminar servicio
-Route::delete('/parentesco/delete/{id}',  [ParentescosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
+Route::delete('/parentesco/delete/{id}',  [ParentescosController::class, 'eliminarServicio'])->name('Parentescos.destroy')->middleware('auth');
 //VistaEdicion
 Route::get('/parentesco/{id}/editar', [ParentescosController::class, 'edit'])->name('parentesco.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
@@ -79,23 +79,23 @@ Route::get('/conf/ejecutivos',  [EjecutivosController::class, 'ejecutivos'])->na
 //crear ejecutivo
 Route::post('/conf/ejecutivos/create',  [EjecutivosController::class, 'storeEjecutivos'])->name('config.store.ejecutivos')->middleware('auth');
 //Eliminar servicio
-Route::delete('/conf/delete/{id}',  [EjecutivosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
+Route::delete('/ejecutivos/delete/{id}',  [EjecutivosController::class, 'eliminarServicio'])->name('Ejecutivos.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/servicios/{id}/editar', [EjecutivosController::class, 'edit'])->name('servicios.editar')->middleware('auth');
+Route::get('/ejecutivos/{id}/editar', [EjecutivosController::class, 'edit'])->name('Ejecutivos.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
-Route::put('/servicios/{id}', [EjecutivosController::class, 'update'])->name('servicios.actualizar')->middleware('auth');
-
+Route::put('/ejecutivos/{id}', [EjecutivosController::class, 'update'])->name('Ejecutivos.actualizar')->middleware('auth');
+// Ejecutivos
 //Roles
 //roles ejecutivos
-Route::get('/conf/rolesEjecutivos',  [RolesEjecutivosController::class, 'rolesEjecutivos'])->name('config.rolesEjecutivos')->middleware('auth');
+Route::get('/roles' ,  [RolesEjecutivosController::class, 'rolesEjecutivos'])->name('rolesEjecutivos')->middleware('auth');
 //crear Rol
-Route::post('/conf/rolesEjecutivos/create',  [RolesEjecutivosController::class, 'storeRolesEjecutivos'])->name('config.store.rolesEjecutivos')->middleware('auth');
+Route::post('/roles/create',  [RolesEjecutivosController::class, 'storeRolesEjecutivos'])->name('store.rolesEjecutivos')->middleware('auth');
 //Eliminar servicio
-Route::delete('/rolesEjecutivos/delete/{id}',  [RolesEjecutivosController::class, 'eliminarServicio'])->name('rolesEjecutivos.destroy')->middleware('auth');
+Route::delete('/roles/delete/{id}',  [RolesEjecutivosController::class, 'eliminarServicio'])->name('rolesEjecutivos.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/rolesEjecutivos/{id}/editar', [RolesEjecutivosController::class, 'edit'])->name('rolesEjecutivos.editar')->middleware('auth');
+Route::get('/roles/{id}/editar', [RolesEjecutivosController::class, 'edit'])->name('rolesEjecutivos.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
-Route::put('/rolesEjecutivos/{id}', [RolesEjecutivosController::class, 'update'])->name('rolesEjecutivos.actualizar')->middleware('auth');
+Route::put('/roles/{id}', [RolesEjecutivosController::class, 'update'])->name('rolesEjecutivos.actualizar')->middleware('auth');
 
 
 

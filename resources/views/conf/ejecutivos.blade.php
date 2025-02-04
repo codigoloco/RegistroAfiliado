@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-3 m-2 g-2">
             <button class="btn btn-primary" type="submit">Guardar</button>
-            <button class="btn btn-secondary" type="reset">Limpiar</button>
+            <a href="{{ route('config') }}" class="btn btn-secondary">Volver</a>
         </div>
     </div>
     <div class="row">
@@ -52,7 +52,7 @@
                         <td>{{ $ejecutivo->nombre }}</td>
                         <td>{{ $ejecutivo->Activo==1?"Activo":"Inactivo" }}</td>
                         <td>                             
-                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/rolesEjecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/Ejecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
                         </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>

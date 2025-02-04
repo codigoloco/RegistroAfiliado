@@ -2,7 +2,7 @@
 <div class="row m-2 p-2">
     <h1>Agregar Roles Ejecutivos</h1>
 </div>
-<form action="{{ route('config.store.rolesEjecutivos') }}" method="POST">
+<form action="{{ route('store.rolesEjecutivos') }}" method="POST">
     @csrf
     <div class="row">
         <div class="col-md-3">
@@ -19,7 +19,7 @@
         </div>
         <div class="col-md-3 m-2 g-2">
             <button class="btn btn-primary" type="submit">Guardar</button>
-            <button class="btn btn-secondary" type="reset">Limpiar</button>
+            <a href="{{ route('config') }}" class="btn btn-secondary">Volver</a>
         </div>
     </div>
     <div class="row">
@@ -41,7 +41,7 @@
                         <td>{{ $rol->nombre }}</td>
                         <td>{{ $rol->detalle }}</td>
                         <td>                             
-                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/conf/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/ejecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
                         </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
