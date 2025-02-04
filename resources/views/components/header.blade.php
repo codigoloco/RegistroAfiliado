@@ -60,7 +60,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ route('config')}}">Configuracion</a></li>
-              <li><a class="dropdown-item" href="#">Reportes</a></li>
+              <li><a class="dropdown-item" href="{{route(name:'reportes')}}">Reportes</a></li>
             </ul>
           </li>
         </ul>
