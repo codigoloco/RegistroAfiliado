@@ -10,14 +10,16 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
+    {/// AGREGAR BANCO CLIENTEs... CORREGIR 
         Schema::create('bancos', function (Blueprint $table) {
             $table->id();
-            $table->string('Bancos')->nullable(false);
-            $table->integer('Codigo')->nullable(false);
-            $table->boolean('activo')->default(0)->nullable(false);
-            $table->foreignId('user_id')->constrained('users'); // Clave foránea a la tabla rolesejecutivos
+
+            $table->string('Bancos')->nullable();
+            $table->integer('Codigo')->nullable();            
+            $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');            
             $table->timestamps();
+
+            
         });
     }
 

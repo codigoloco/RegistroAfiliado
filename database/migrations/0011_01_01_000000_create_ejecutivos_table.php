@@ -11,18 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rolesEjecutivos', function (Blueprint $table) {
-            $table->id();
-            $table->string("nombre");
-            $table->string("detalle");            
-            $table->timestamps();
-        });
         Schema::create('ejecutivos', function (Blueprint $table) {
             $table->id(); // Columna autoincremental para el ID
             $table->string('nombre'); // Nombre del ejecutivo
             $table->string('apellido'); // Apellido del ejecutivo
-            $table->boolean("Activo")->default(true);
-            $table->foreignId('rolEjecutivo_id'); // Clave foránea a la tabla rolesejecutivos
+            $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');            
             $table->timestamps(); // Columnas created_at y updated_at
         });
 
@@ -33,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        
-        Schema::dropIfExists('rolesEjecutivos');
         Schema::dropIfExists('ejecutivos');
     }
 };
