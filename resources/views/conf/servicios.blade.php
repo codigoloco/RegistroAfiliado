@@ -32,7 +32,7 @@
                     <tr>
 
                         <th>nombre</th>
-                        <th>Cantidad de servicios</th>
+                        <th>Cantidad de Beneficiarios</th>
                         <th>status</th>
                         <th>Acciones</th>
                         <!-- Agrega más columnas según sea necesario -->

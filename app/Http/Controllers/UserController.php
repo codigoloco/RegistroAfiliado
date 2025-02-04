@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     //
-    function inicio()
+    public function inicio()
     {
-        return view("conf.usuario");
+        $usuarios = User::all();
+        return view("conf.usuario",compact('usuarios'));
     }
 }
