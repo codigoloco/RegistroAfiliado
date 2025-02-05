@@ -37,10 +37,10 @@ class EjecutivosController extends Controller
         try {
             $ejecutivos = ejecutivos::findOrFail($id);
             $ejecutivos->delete();
-            return response()->json(['message' => 'rolesejecutivos eliminado correctamente']);
+            return response()->json(['message' => 'ejecutivo eliminado correctamente']);
         } catch(\Throwable $th){
             return redirect()->back()
-                ->with('error', 'Ocurrió un error al actualizar el rolesejecutivos: ' . $th->getMessage());
+                ->with('error', 'Ocurrió un error al actualizar el ejecutivo: ' . $th->getMessage());
         }
     }
     // Método para procesar la actualización
