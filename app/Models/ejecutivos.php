@@ -12,7 +12,7 @@ class ejecutivos extends Model
 
     protected $fillable = [
         'nombre',
-        'maximoServicios',
+        'apellido',
         'status'
     ];
 }

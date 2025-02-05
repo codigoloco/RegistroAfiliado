@@ -19,7 +19,8 @@ class EjecutivosController extends Controller
             $configuracion = new ejecutivos();
             $configuracion->nombre = $request->nombre;
             $configuracion->apellido = $request->apellido;
-            $configuracion->rolEjecutivo_id  = $request->rolEjecutivo;
+            $configuracion->status = 1;
+            
 
             $configuracion->save();
         } catch (\Throwable $th) {
@@ -34,8 +35,8 @@ class EjecutivosController extends Controller
     {
 
         try {
-            $servicio = ejecutivos::findOrFail($id);
-            $servicio->delete();
+            $ejecutivos = ejecutivos::findOrFail($id);
+            $ejecutivos->delete();
             return response()->json(['message' => 'rolesejecutivos eliminado correctamente']);
         } catch(\Throwable $th){
             return redirect()->back()

@@ -41,7 +41,7 @@
                         <td>{{ $ejecutivo->nombre }}</td>
                         <td>{{ $ejecutivo->Activo==1?"Activo":"Inactivo" }}</td>
                         <td>                             
-                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/Ejecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                            <button value="{{$ejecutivo->id}}" type="button" name="EliminarServicio" data-modulo="/Ejecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
                         </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
