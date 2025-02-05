@@ -4,15 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Servicio extends Model
+class Servicios extends Model
 {
-     public function allServicio()
-    {
-        return self::all();
-    }
+    //
+
     protected $fillable = [
         'nombre',
-        'maximoServicios',
+        'cantidad_maxima_beneficiarios',
         'status'
     ];
 }

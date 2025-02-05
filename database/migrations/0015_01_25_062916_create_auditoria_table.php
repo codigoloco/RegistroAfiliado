@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string("acciones");
             
             $table->bigInteger('ejecutivo_id')->unsigned();
-            $table->foreign("cliente_id")->references("id")->on("clientes");
+            $table->foreign("ejecutivo_id")->references("id")->on("ejecutivos");
 
             $table->timestamps();
             

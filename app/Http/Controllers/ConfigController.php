@@ -6,7 +6,7 @@ use App\Models\ejecutivos;
 use App\Models\Servicio;
 use Illuminate\Http\Request;
 use App\Models\parentescos;
-use App\Models\rolesejecutivos;
+
 
 class ConfigController extends Controller
 {

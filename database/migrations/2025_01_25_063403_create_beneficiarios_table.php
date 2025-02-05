@@ -24,18 +24,15 @@ return new class extends Migration
             $table->string('direccion'); // Dirección
             $table->string('telefono'); // Teléfono (mejor como string para incluir códigos de área)
             $table->string('celular'); // Celular (mejor como string para incluir códigos de área)
-            $table->bigInteger('parentescos_id')->unsigned();   
-            $table->bigInteger("afiliado_id");
-            $table->bigInteger('servicio_id');                 
+            $table->bigInteger('parentescos_id')->references('id')->on('parentescos');;   
+            $table->bigInteger("afiliado_id")->references('id')->on('afiliado');;
+            $table->bigInteger('servicio_id')->references('id')->on('servicios'); ;                 
             
             $table->string('empresa'); // Empresa
             
             $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');
             $table->enum('convenio',['ACTIVO','INACTIVO'])->default('INACTIVO');
 
-            $table->foreignId('parentesco_id')->references('id')->on('parentescos'); // Clave foránea a la tabla clientes
-            $table->foreignId('afiliado_id')->references('id')->on('afiliados'); // Clave foránea a la tabla clientes
-            $table->foreignId('servicio_id')->references('id')->on('servicios'); // Clave foránea a la tabla clientes
             $table->timestamps(); // Columnas created_at y updated_at
         });
     }
