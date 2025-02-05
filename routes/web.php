@@ -10,7 +10,6 @@ use App\Http\Controllers\EjecutivosController;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\ParentescosController;
 use App\Http\Controllers\ServiciosController;
-use App\Http\Controllers\RolesEjecutivosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportesController;
 

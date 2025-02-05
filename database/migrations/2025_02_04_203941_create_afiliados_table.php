@@ -17,7 +17,7 @@ return new class extends Migration
             $table->bigInteger('servicio_id')->unsigned(); // Clave foránea a la tabla servicios
             $table->string('nro_afiliado')->unique(); // Número de afiliado (único)
             $table->date('fecha_renovacion'); // Fecha de renovación            
-            $table->bigInteger('ejecutivo_id')->unsigned(); // Clave foránea a la tabla rolesejecutivos
+            $table->bigInteger('ejecutivo_id')->unsigned(); // Clave foránea a la tabla 
             $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');
             $table->timestamps(); // Columnas created_at y updated_at
 
