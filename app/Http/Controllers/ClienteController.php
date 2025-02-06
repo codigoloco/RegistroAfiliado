@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Clientes;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ClienteController extends Controller
 {
+    public function create(Clientes $clientes)
+    {
+        $modo = 'crear';
+        return view('clientes.regClientes', compact('modo', 'clientes'));
+    }
 
+    public function abrirEdicion($id)
+    {       
+        $modo = 'editar';
+        $cliente = Clientes::find($id);
+        return view('clientes.regClientes', compact('modo', 'cliente'));
+    }
     public function index()
     {
         $clientes = Clientes::all();
@@ -17,25 +27,45 @@ class ClienteController extends Controller
 
     public function storeClientes(Request $request)
     {
-        $cliente = new Clientes();
-        
-        $cliente->nombre = $request->nombre;
-        $cliente->apellido = $request->apellido;
-        $cliente->nacionalidad = "VENEZOLANO";
-        $cliente->cedula   = $request->cedula;
-        $cliente->rif = $request->rif;
-        $cliente->fechaNacimiento = $request->fechaNacimiento;
-        $cliente->telefono = $request->telefono;
-        $cliente->correo = $request->correo;
-        $cliente->empresa = $request->empresa;
-        $cliente->status = $request->status;
-        $cliente->direccion = $request->direccion;
-        $cliente->users_id = Auth::id();
-        
-        $cliente->save();
+        try {
+            $cliente = new Clientes();
+
+            $cliente->primer_nombre = $request->primerNombre;
+            $cliente->segundo_nombre = $request->segundoNombre;
+            $cliente->primer_apellido = $request->primerApellido;
+            $cliente->segundo_apellido = $request->segundoApellido;
+            $cliente->nacionalidad = $request->Nacionalidad;
+            $cliente->cedula   = $request->cedula;
+            $cliente->rif = $request->rif;
+            $cliente->fecha_nacimiento = $request->fechaNacimiento;
+            $cliente->telefono = $request->telefono;
+            $cliente->correo = $request->correo;
+            $cliente->empresa = $request->empresa;
+            $cliente->status = $request->status;
+            $cliente->direccion = $request->direccion;
 
 
-        // save($validatedData);
+            $cliente->save();
+
+            // save($validatedData);
+
+        } catch (\Exception $e) {
+            if ($e->getCode() == 23000) {
+                return redirect()->route('buscar.Clientes')->with('error', 'Cliente ya registrado. ');
+            }
+        }
         return redirect()->route('buscar.Clientes')->with('success', 'Cliente registrado exitosamente.');
+    }
+
+    public function edit($id)
+    {
+        $cliente = Clientes::find($id);
+        return redirect()->route('buscar.Clientes', compact('cliente'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $cliente = Clientes::find($id);
+        $cliente->update($request->all());
     }
 }

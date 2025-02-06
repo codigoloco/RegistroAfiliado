@@ -23,17 +23,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-2 mb-3">
-            <label for="rolEjecutivo" class="form-label">Rol Ejecutivo</label>
-            <select class="form-select" name="rolEjecutivo" id="rolEjecutivo" required>
-                <option selected>Seleccione</option>
-                @foreach($rolesEjecutivos as $rol)
-                <option value="{{ $rol->id }}">{{ $rol->nombre }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="row">
         <div class="col-6 p-3 m-3 g-2">
             <table class="table">
                 <thead>
@@ -52,7 +41,7 @@
                         <td>{{ $ejecutivo->nombre }}</td>
                         <td>{{ $ejecutivo->Activo==1?"Activo":"Inactivo" }}</td>
                         <td>                             
-                            <button value="{{$rol->id}}" type="button" name="EliminarServicio" data-modulo="/Ejecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
+                            <button value="{{$ejecutivo->id}}" type="button" name="EliminarServicio" data-modulo="/Ejecutivos/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>
                         </td>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>

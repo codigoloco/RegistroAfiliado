@@ -3,16 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-/**
- * @Property string $nombre
- */
-class ejecutivos extends Model
+
+class Servicios extends Model
 {
     //
 
     protected $fillable = [
         'nombre',
-        'apellido',
+        'cantidad_maxima_beneficiarios',
         'status'
     ];
 }

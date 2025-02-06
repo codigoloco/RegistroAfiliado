@@ -21,8 +21,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Administrador',
             'email' => 'test@example.com',
             'password'=>'123456'
+        ])->create([
+            'name' => 'Administrador',
+            'email' => 'enderbl1996@gmail.com',
+            'password'=>'123456'
         ]);
-
         
     }
 }

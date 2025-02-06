@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\parentescos;
+use App\Models\Parentescos;
 use App\Models\Afiliados;
-use App\Models\ejecutivos;
-use App\Models\servicio;
+use App\Models\Ejecutivos;
+use App\Models\Servicios;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
@@ -22,9 +22,9 @@ class AfiliadosController extends Controller
     }
     public function afiliados()
     {        
-        $ejecutivos=ejecutivos::all();
-        $parentescos = parentescos::all();
-        $servicios = servicio::all();
+        $ejecutivos=Ejecutivos::all();
+        $parentescos = Parentescos::all();
+        $servicios = Servicios::all();
         return view('afiliados.afiliado', compact("servicios", "parentescos", "ejecutivos"));
     }
     public function storeAFiliados(Request $request)

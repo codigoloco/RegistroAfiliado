@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Servicio;
+use App\Models\Servicios;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
@@ -10,21 +10,21 @@ class ServiciosController extends Controller
 {
     public function index()
     {
-        $servicios = Servicio::all();
+        $servicios = Servicios::all();
         return view('conf.servicios', compact("servicios"));
     }
     public function servicios()
     {
-        $servicios = Servicio::all();
+        $servicios = Servicios::all();
         return view('conf.servicios', compact("servicios"));
     }
 
     public function storeServicios(Request $request)
     {
        
-        $configuracion = new Servicio();
+        $configuracion = new Servicios();
         $configuracion->nombre = $request->nombre;
-        $configuracion->maximoServicios = $request->cantidad;
+        $configuracion->cantidad_maxima_beneficiarios = $request->cantidad;
         $configuracion->save();
 
         return  redirect()->route('config.servicios');
@@ -32,7 +32,7 @@ class ServiciosController extends Controller
     public function eliminarServicio($id)
     {
         try {
-            $servicio = Servicio::findOrFail($id);
+            $servicio = Servicios::findOrFail($id);
             $servicio->delete();
             
             return response()->json(['message' => 'Servicio eliminado correctamente']);
@@ -43,7 +43,7 @@ class ServiciosController extends Controller
 
     public function edit($id)
     {
-        $servicio = Servicio::findOrFail($id); // Obtener el servicio a editar
+        $servicio = Servicios::findOrFail($id); // Obtener el servicio a editar
         return view('conf.editar', compact('servicio')); // Pasar el servicio a la vista
     }
 
@@ -51,7 +51,7 @@ class ServiciosController extends Controller
     public function update(Request $request, $id)
     { try{
         
-        $servicio = Servicio::findOrFail($id); // Obtener el servicio a actualizar        
+        $servicio = Servicios::findOrFail($id); // Obtener el servicio a actualizar        
         // Validar los datos del formulario
         
         $request->validate([
@@ -65,7 +65,7 @@ class ServiciosController extends Controller
 
         $servicio->update([
             'nombre' => $request->nombre,
-            'maximoServicios' => $request->maximoServicios,
+            'cantidad_maxima_beneficiarios' => $request->maximoServicios,
             'status' => $status, // Usamos el valor convertido
         ]);
         

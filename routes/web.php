@@ -10,7 +10,6 @@ use App\Http\Controllers\EjecutivosController;
 use App\Http\Controllers\GetController;
 use App\Http\Controllers\ParentescosController;
 use App\Http\Controllers\ServiciosController;
-use App\Http\Controllers\RolesEjecutivosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportesController;
 
@@ -33,7 +32,8 @@ Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('ser
 
 //clientes
 //Registro
-Route::get('/regClientes', [GetController::class, 'regClientes'])->name('regClientes')->middleware('auth');
+Route::get('/regClientes', [ClienteController::class, 'create'])->name('regClientes')->middleware('auth');
+
 //Busqueda o vista 
 Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clientes')->middleware('auth');
 //Registrar Clientes
@@ -41,7 +41,7 @@ Route::post('/clientes',  [ClienteController::class, 'storeClientes'])->name('cl
 //Eliminar servicio
 Route::delete('/clientes/delete/{id}',  [ClienteController::class, 'eliminarServicio'])->name('clientes.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/clientes/{id}/editar', [ClienteController::class, 'edit'])->name('clientes.editar')->middleware('auth');
+Route::get('/clientes/{id}/editar', [ClienteController::class, 'abrirEdicion'])->name('clientes.update')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.actualizar')->middleware('auth');
 
@@ -85,18 +85,6 @@ Route::delete('/ejecutivos/delete/{id}',  [EjecutivosController::class, 'elimina
 Route::get('/ejecutivos/{id}/editar', [EjecutivosController::class, 'edit'])->name('Ejecutivos.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/ejecutivos/{id}', [EjecutivosController::class, 'update'])->name('Ejecutivos.actualizar')->middleware('auth');
-// Ejecutivos
-//Roles
-//roles ejecutivos
-Route::get('/roles' ,  [RolesEjecutivosController::class, 'rolesEjecutivos'])->name('rolesEjecutivos')->middleware('auth');
-//crear Rol
-Route::post('/roles/create',  [RolesEjecutivosController::class, 'storeRolesEjecutivos'])->name('store.rolesEjecutivos')->middleware('auth');
-//Eliminar servicio
-Route::delete('/roles/delete/{id}',  [RolesEjecutivosController::class, 'eliminarServicio'])->name('rolesEjecutivos.destroy')->middleware('auth');
-//VistaEdicion
-Route::get('/roles/{id}/editar', [RolesEjecutivosController::class, 'edit'])->name('rolesEjecutivos.editar')->middleware('auth');
-// Ruta para procesar la actualización del servicio
-Route::put('/roles/{id}', [RolesEjecutivosController::class, 'update'])->name('rolesEjecutivos.actualizar')->middleware('auth');
 
 
 

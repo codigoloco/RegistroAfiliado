@@ -44,7 +44,7 @@
                     <tr class="{{$servicio->id}}">
 
                         <td>{{ $servicio->nombre }}</td>
-                        <td>{{ $servicio->maximoServicios }}</td>
+                        <td>{{ $servicio->cantidad_maxima_beneficiarios }}</td>
                         <td>{{ $servicio->status == 0 ?'Inactivo':'Activo'}} </td>
 
                         <td> <a value="{{$servicio->id}}" type="button" name="EditarServicio" href="{{ route('servicios.editar', $servicio->id) }}" id="EditarServicio" class="btn btn-primary ">Editar</a>

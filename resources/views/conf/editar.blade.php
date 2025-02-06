@@ -24,7 +24,7 @@
                                 <div class="row p-2 mt-3 justify-content-center">
                                     <div class="col-3">
                                         <div class="form-floating">
-                                            <input type="text" value='{{$servicio->maximoServicios}}' class="form-control" id="maximoServicios" pattern="\d{1,9}" inputmode="numeric" maxlength="4" placeholder="99.999.999" name="maximoServicios" required>
+                                            <input type="text" value='{{$servicio->cantidad_maxima_beneficiarios}}' class="form-control" id="maximoServicios" pattern="\d{1,9}" inputmode="numeric" maxlength="4" placeholder="99.999.999" name="maximoServicios" required>
                                             <label for="maximoServicios">Cantidad Maxima de Beneficiarios</label>
                                         </div>
                                     </div>
