@@ -32,7 +32,8 @@ Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('ser
 
 //clientes
 //Registro
-Route::get('/regClientes', [GetController::class, 'regClientes'])->name('regClientes')->middleware('auth');
+Route::get('/regClientes', [ClienteController::class, 'create'])->name('regClientes')->middleware('auth');
+
 //Busqueda o vista 
 Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clientes')->middleware('auth');
 //Registrar Clientes
@@ -40,7 +41,7 @@ Route::post('/clientes',  [ClienteController::class, 'storeClientes'])->name('cl
 //Eliminar servicio
 Route::delete('/clientes/delete/{id}',  [ClienteController::class, 'eliminarServicio'])->name('clientes.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/clientes/{id}/editar', [ClienteController::class, 'edit'])->name('clientes.editar')->middleware('auth');
+Route::get('/clientes/{id}/editar', [ClienteController::class, 'abrirEdicion'])->name('clientes.update')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.actualizar')->middleware('auth');
 

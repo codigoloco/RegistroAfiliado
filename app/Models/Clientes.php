@@ -12,8 +12,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $rif
  * @property string $fechaNacimiento
  * @property mixed $correo
- * @property boolean $status
- * @property boolean $status
+ * @property string $status
+ * 
  * @
  * 
  * 
@@ -23,11 +23,7 @@ class Clientes extends Model
     use HasFactory;
       
 
-    public function allClientes()
-    {
-        return self::all();
-    }
-    
+
     protected $fillable = [
         'nombre',
         'apellido',
@@ -35,12 +31,11 @@ class Clientes extends Model
         'cedula',
         'rif',
         'fechaNacimiento',
-        'direccion',
         'telefono',
         'correo',
         'empresa',
         'status',
-        'users_id',
+        'direccion',        
     ];
 }
 
