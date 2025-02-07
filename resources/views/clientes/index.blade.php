@@ -12,7 +12,7 @@
             <a href="{{ route('regClientes')}}" class="btn btn-primary">Registrar Cliente</a>
         </div>
         <div class="col-6">
-            <input type="text" class="form-control"  id+="searchInput" placeholder="Buscar Cliente">
+            <input type="text" class="form-control"  id="searchInput" placeholder="Buscar Cliente">
 
 
         </div>

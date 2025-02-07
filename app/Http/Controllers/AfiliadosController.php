@@ -43,8 +43,7 @@ class AfiliadosController extends Controller
     {
         try {
             // Obtener todos los datos del formulario en formato JSON
-            $formData = $request->all();
-            \Log::info('Datos del formulario:', $formData);
+            $formData = $request->all();            
 
             $afiliado = new afiliados;
             $cliente = Clientes::where('cedula','=', $request->CedulaTitular)->first();
