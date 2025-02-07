@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function detectaridBtn() {
-    let botones = document.querySelectorAll(".btn")
+    const botones = document.querySelectorAll(".btn")
     let idAccion;
     let inputsExistentes;
     let modulo;

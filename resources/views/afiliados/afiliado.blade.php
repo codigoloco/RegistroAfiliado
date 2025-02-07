@@ -11,7 +11,7 @@
               <div class="row">
                 <div class="col-3 mb-2">
                   <label for="CedulaTitular" class="form-label">Cedula Titular</label>
-                  <input type="text" placeholder="99.999.999" maxlength="8" pattern="\d{1,9}" inputmode="numeric" class="form-control" id="CedulaTitular" name="CedulaTitular" required>
+                  <input type="text" placeholder="99.999.999" id="cedulaTitularAfiliado" maxlength="8" pattern="\d{1,9}" inputmode="numeric" class="form-control" id="CedulaTitular" name="CedulaTitular" required>
                 </div>
                 <div class="col-3 mb-2">
                   <label for="tipoServicio" class="form-label">Tipo Servicio</label>
