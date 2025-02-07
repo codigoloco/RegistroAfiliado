@@ -17,8 +17,8 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('inicio')->middleware('auth');
 
-Route::get('/afiliados',  [AfiliadosController::class, 'afiliados'])->name('afiliados')->middleware('auth');
 //AFiliados
+Route::get('/afiliados',  [AfiliadosController::class, 'afiliados'])->name('afiliados')->middleware('auth');
 //registrar afiliados
 route::post('/afiliados/create',  [AfiliadosController::class, 'storeAFiliados'])->name('afiliados.store')->middleware('auth');
 //BuscarAfiliados
@@ -34,7 +34,7 @@ Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('ser
 //Registro
 Route::get('/regClientes', [ClienteController::class, 'create'])->name('regClientes')->middleware('auth');
 
-//Busqueda o vista 
+//Busqueda o vista
 Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clientes')->middleware('auth');
 //Registrar Clientes
 Route::post('/clientes',  [ClienteController::class, 'storeClientes'])->name('clientes.store')->middleware('auth');

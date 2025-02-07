@@ -12,8 +12,10 @@
                 <thead>
                     <tr>
                         <th>ID Rol</th>
-                        <th>nombre</th>
-                        <th>detalle</th>
+                        <th>cedula</th>
+                        <th>Nombre y apellido</th>
+                        <th>Servicio</th>
+                        <th>Acciones</th>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                 </thead>
@@ -21,9 +23,11 @@
                     @foreach($Afiliados as $afiliado)
                     <tr>
                         <td>{{ $afiliado->id }}</td>
-                        <td>{{ $afiliado->nombre }}</td>
-                        <td>{{ $afiliado->detalle }}</td>
-                        <td> input</td>
+                        <td>{{ $afiliado->cedula }}</td>
+                        <td>{{ $afiliado->primer_nombre }} {{$afiliado->segundo_nombre}}</td>
+                        <td>{{ $afiliado->nombre_servicio}}</td>
+                        <td><button type='button' class='btn btn-secondary' data-modulo='afiliados/editar' >edicion</button></td>
+
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                     @endforeach
