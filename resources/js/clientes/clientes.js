@@ -1,3 +1,5 @@
+import buscador from "../componentes/buscador";
+buscador();
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const tbody = document.getElementById('clientesTabla');

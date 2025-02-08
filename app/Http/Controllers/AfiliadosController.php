@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Parentescos;
 use App\Models\Afiliados;
+use App\Models\Beneficiarios;
 use App\Models\Ejecutivos;
 use App\Models\Servicios;
 use App\Models\Clientes;
@@ -43,27 +44,49 @@ class AfiliadosController extends Controller
     {
         try {
             // Obtener todos los datos del formulario en formato JSON
-            $formData = $request->all();            
+            
 
             $afiliado = new afiliados;
             $cliente = Clientes::where('cedula','=', $request->CedulaTitular)->first();
-
+            $beneficiarios = new Beneficiarios;
+            
             $fechaActual = Carbon::now();
             $fechaRenovacion = $fechaActual->addYear();
             $fechaRenovacion=$fechaRenovacion->format('Y-m-d');
+            $nro_afiliado =strval($request->tipoServicio.$request->CedulaTitular.$fechaActual->format('Y-m-d')); 
 
             $afiliado->cliente_id = $cliente->id;
             $afiliado->servicio_id = $request->tipoServicio;
-            $afiliado->nro_afiliado = $request->CedulaTitular;
+            $afiliado->nro_afiliado =$nro_afiliado ;
             $afiliado->fecha_renovacion = $fechaRenovacion;
 
             $afiliado->ejecutivo_id  = $request->ejecutivo;
             $afiliado->status = 1;
-
+           
+            $beneficiarios->parentesco_id = $request->parentesco;
+            $beneficiarios->primer_nombre = strval($request->primer_nombre);
+            $beneficiarios->primer_apellido = strval($request->primer_apellido);
+            $beneficiarios->segundo_nombre = strval($request->segundo_nombre);
+            $beneficiarios->segundo_apellido = strval($request->segundo_apellido);
+            $beneficiarios->cedula = strval($request->CedulaBeneficiario);
+            $beneficiarios->fecha_nacimiento = date('Y-m-d', strtotime($request->FechaNacimiento));
+            $beneficiarios->telefono = strval($request->Telefono);            
+            $beneficiarios->parentesco_id = $request->Parentesco;
+            $beneficiarios->servicio_id = $request->tipoServicio;
+            $beneficiarios->nacionalidad = strval($request->Nacionalidad);
+            $beneficiarios->empresa = 'Afiliado';
+            $beneficiarios->status = 'ACTIVO';
+            $beneficiarios->convenio = 'INACTIVO';
+            
+            
+            
             $afiliado->save();
+            $id_afiliado = Afiliados::latest()->first()->id;
+            $beneficiarios->afiliado_id = $id_afiliado;
+            $beneficiarios->save();
 
             // Retornar respuesta con los datos recibidos
-            return  redirect()->route('afiliados')->with('Procesado', 'Afiliado creado correctamente.');
+            return  redirect()->route('afiliados')->with('success', 'Afiliado creado correctamente.');
 
         } catch (\Throwable  $th ) {
             return response()->json([

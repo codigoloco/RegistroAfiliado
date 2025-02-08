@@ -22,5 +22,30 @@ class Afiliados extends Model
         'status',
         'direccion',
     ];
+    public function Servicios()
+    {
+        return $this->belongsTo(Servicios::class);
+    }
+
+    public function ejecutivo()
+    {
+        return $this->belongsTo(Ejecutivos::class);
+    }
+
+    public function cliente()
+    {
+        return $this->belongsTo(Clientes::class);
+    }
+
+    public function beneficiarios()
+    {
+        return $this->hasMany(Beneficiarios::class);
+    }
+
+    public function parentescos()
+    {
+        return $this->belongsTo(Parentescos::class);
+    }
+
 }
 

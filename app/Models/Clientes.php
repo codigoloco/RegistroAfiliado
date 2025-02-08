@@ -37,5 +37,18 @@ class Clientes extends Model
         'status',
         'direccion',        
     ];
+
+    public function afiliados()
+    {
+        return $this->hasMany(Afiliados::class);
+    }
+
+    public function beneficiarios()
+    {
+        return $this->hasMany(Beneficiarios::class);
+    }
+    
+    
+
 }
 

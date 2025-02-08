@@ -1,6 +1,7 @@
 <x-header />
 <br>
 <br>
+@vite('resources/js/clientes/clientes.js')
 <div class="container">
   <div class="row">
     <div class="col-12"> 
