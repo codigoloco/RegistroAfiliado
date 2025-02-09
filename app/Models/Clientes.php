@@ -25,17 +25,19 @@ class Clientes extends Model
 
 
     protected $fillable = [
-        'nombre',
-        'apellido',
+        'primer_nombre',
+        'segundo_nombre',
+        'primer_apellido',
+        'segundo_apellido',
         'nacionalidad',
         'cedula',
         'rif',
-        'fechaNacimiento',
+        'fecha_nacimiento',
         'telefono',
         'correo',
         'empresa',
         'status',
-        'direccion',        
+        'direccion'
     ];
 }
 

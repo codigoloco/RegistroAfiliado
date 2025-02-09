@@ -7,6 +7,16 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    public function index()
+    {
+        $clientes = Clientes::all();
+        return view('clientes.index', compact('clientes'));
+    }
+    public function getClientes()
+    {
+        $clientes = Clientes::all();
+        return response()->json($clientes);
+    }
     public function create(Clientes $clientes)
     {
         $modo = 'crear';
@@ -19,11 +29,7 @@ class ClienteController extends Controller
         $cliente = Clientes::find($id);
         return view('clientes.regClientes', compact('modo', 'cliente'));
     }
-    public function index()
-    {
-        $clientes = Clientes::all();
-        return view('clientes.index', compact('clientes'));
-    }
+
 
     public function storeClientes(Request $request)
     {

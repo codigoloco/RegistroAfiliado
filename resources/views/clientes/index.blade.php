@@ -1,4 +1,5 @@
 <x-header />
+
 <div class="container">
     <div class="row mt-4 justify-content-center">
         <div class="col-12 text-center">
@@ -26,10 +27,10 @@
                         <th>cedula</th>
                         <th>RIF</th>
                         <th>status</th>
-                        <th>nombre</th>
-                        <th>apellido</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
                         <th>correo</th>
-
+                        <th>Acciones</th>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                 </thead>
@@ -39,10 +40,12 @@
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->cedula }}</td>
                             <td>{{ $cliente->rif }}</td>
+
                             <td>{{ $cliente->status }}</td>
 
-                            <td>{{ $cliente->nombre }}</td>
-                            <td>{{ $cliente->apellido }}</td>
+                            <td>{{ $cliente->primer_nombre }} {{ $cliente->segundo_nombre }}</td>
+                            <td>{{ $cliente->primer_apellido }} {{ $cliente->segundo_apellido }}</td>
+
                             <td>{{ $cliente->correo }}</td>
                             <td>
                                 <a value="{{$cliente->id}}" type="button" name="EditarServicio"
@@ -75,3 +78,4 @@
         </footer>
     </div>
 </div>
+@vite('resources/js/componentes/BucarClientes.js')

@@ -36,6 +36,8 @@ Route::get('/regClientes', [ClienteController::class, 'create'])->name('regClien
 
 //Busqueda o vista
 Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clientes')->middleware('auth');
+// clientesjson
+Route::get('/clientes/get',  [ClienteController::class, 'getClientes'])->middleware('auth');
 //Registrar Clientes
 Route::post('/clientes',  [ClienteController::class, 'storeClientes'])->name('clientes.store')->middleware('auth');
 //Eliminar servicio

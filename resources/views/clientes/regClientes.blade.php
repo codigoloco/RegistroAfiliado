@@ -14,3 +14,5 @@
   </div>
 </div>
 <x-footer />
+
+@vite('resources/js/componentes/BucarClientes.js')
