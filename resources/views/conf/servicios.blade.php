@@ -1,22 +1,24 @@
 <x-header />
 <div class="row m-2 p-2">
-    <h1>Agregar Servicios</h1>    
+    <h1>Agregar Servicios</h1>
 </div>
 <form action="{{ route('config.store') }}" method="POST">
     @csrf
     <div class="row">
-        <div class="col-md-2 offset-md-3 ">
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control"  id="cantidad" name="cantidad" pattern="\d{1,9}" inputmode="numeric" maxlength="4"  required>
-                <label for="cantidad">Cantidad</label>
-            </div>
-        </div>
-        <div class="col-md-3 ">
+        <div class="col-md-3 offset-md-3">
             <div class="form-floating mb-3 ">
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
-                <label for="nombre">Nombre</label>
+                <label for="nombre">Nombre del servicio</label>
             </div>
         </div>
+        <div class="col-md-2 ">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="cantidad" name="cantidad" pattern="\d{1,9}"
+                    inputmode="numeric" maxlength="4" required>
+                <label for="cantidad">Cantidad Maxima de beneficiarios</label>
+            </div>
+        </div>
+
 
     </div>
     <div class="row">
@@ -41,17 +43,21 @@
                 <tbody>
                     @foreach($servicios as $servicio)
 
-                    <tr class="{{$servicio->id}}">
+                        <tr class="{{$servicio->id}}">
 
-                        <td>{{ $servicio->nombre }}</td>
-                        <td>{{ $servicio->cantidad_maxima_beneficiarios }}</td>
-                        <td>{{ $servicio->status == 0 ?'Inactivo':'Activo'}} </td>
+                            <td>{{ $servicio->nombre }}</td>
+                            <td>{{ $servicio->cantidad_maxima_beneficiarios }}</td>
+                            <td>{{ $servicio->status}} </td>
 
-                        <td> <a value="{{$servicio->id}}" type="button" name="EditarServicio" href="{{ route('servicios.editar', $servicio->id) }}" id="EditarServicio" class="btn btn-primary ">Editar</a>
-                            <button value="{{$servicio->id}}" type="button" name="EliminarServicio" data-modulo="/servicios/delete/" id="EliminarServicio" class="btn btn-secondary">Eliminar</button>                            
-                        </td>
-                        <!-- Agrega más columnas según sea necesario -->
-                    </tr>
+                            <td> <a value="{{$servicio->id}}" type="button" name="EditarServicio"
+                                    href="{{ route('servicios.editar', $servicio->id) }}" id="EditarServicio"
+                                    class="btn btn-primary ">Editar</a>
+                                <button value="{{$servicio->id}}" type="button" name="EliminarServicio"
+                                    data-modulo="/servicios/delete/" id="EliminarServicio"
+                                    class="btn btn-secondary">Eliminar</button>
+                            </td>
+                            <!-- Agrega más columnas según sea necesario -->
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -62,14 +68,14 @@
 </form>
 <footer>
     @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
     @endif
 
     @if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
     @endif
 </footer>

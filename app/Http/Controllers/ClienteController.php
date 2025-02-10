@@ -7,23 +7,30 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    public function index()
+    {
+        $clientes = Clientes::all();
+        return view('clientes.index', compact('clientes'));
+    }
+    public function getClientes()
+    {
+        $clientes = Clientes::all();
+        return response()->json($clientes);
+    }
     public function create(Clientes $clientes)
     {
         $modo = 'crear';
+
         return view('clientes.regClientes', compact('modo', 'clientes'));
     }
 
     public function abrirEdicion($id)
     {       
         $modo = 'editar';
-        $cliente = Clientes::find($id);
-        return view('clientes.regClientes', compact('modo', 'cliente'));
+        $clientes = Clientes::find($id);        
+        return view('clientes.regClientes', compact('modo', 'clientes'));
     }
-    public function index()
-    {
-        $clientes = Clientes::all();
-        return view('clientes.index', compact('clientes'));
-    }
+
 
     public function storeClientes(Request $request)
     {
@@ -67,5 +74,6 @@ class ClienteController extends Controller
     {
         $cliente = Clientes::find($id);
         $cliente->update($request->all());
+        return redirect()->route('buscar.Clientes')->with('success', 'Cliente actualizado exitosamente.');
     }
 }

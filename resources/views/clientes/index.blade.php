@@ -1,8 +1,23 @@
 <x-header />
+@vite('resources/js/componentes/BucarClientes.js')
+@vite('resources/js/clientes/clientes.js')
+
 <div class="container">
     <div class="row mt-4 justify-content-center">
         <div class="col-12 text-center">
             <h1>Lista de Clientes</h1>
+            
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
         </div>
 
@@ -12,7 +27,7 @@
             <a href="{{ route('regClientes')}}" class="btn btn-primary">Registrar Cliente</a>
         </div>
         <div class="col-6">
-            <input type="text" class="form-control"  id="searchInput" placeholder="Buscar Cliente">
+            <input type="text" class="form-control searchInput"  id="searchInput" placeholder="Buscar Cliente">
 
 
         </div>
@@ -26,10 +41,10 @@
                         <th>cedula</th>
                         <th>RIF</th>
                         <th>status</th>
-                        <th>nombre</th>
-                        <th>apellido</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
                         <th>correo</th>
-
+                        <th>Acciones</th>
                         <!-- Agrega más columnas según sea necesario -->
                     </tr>
                 </thead>
@@ -39,10 +54,12 @@
                             <td>{{ $cliente->id }}</td>
                             <td>{{ $cliente->cedula }}</td>
                             <td>{{ $cliente->rif }}</td>
+
                             <td>{{ $cliente->status }}</td>
 
-                            <td>{{ $cliente->nombre }}</td>
-                            <td>{{ $cliente->apellido }}</td>
+                            <td>{{ $cliente->primer_nombre }} {{ $cliente->segundo_nombre }}</td>
+                            <td>{{ $cliente->primer_apellido }} {{ $cliente->segundo_apellido }}</td>
+
                             <td>{{ $cliente->correo }}</td>
                             <td>
                                 <a value="{{$cliente->id}}" type="button" name="EditarServicio"
@@ -50,8 +67,6 @@
                                     class="btn btn-primary ">
                                     Editar
                                 </a>
-
-
                             </td>
                             <!-- Agrega más columnas según sea necesario -->
                         </tr>
@@ -61,17 +76,6 @@
         </div>
         <footer class="col-12">
 
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if(session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
         </footer>
     </div>
 </div>
