@@ -20,14 +20,15 @@ class ClienteController extends Controller
     public function create(Clientes $clientes)
     {
         $modo = 'crear';
+
         return view('clientes.regClientes', compact('modo', 'clientes'));
     }
 
     public function abrirEdicion($id)
     {       
         $modo = 'editar';
-        $cliente = Clientes::find($id);
-        return view('clientes.regClientes', compact('modo', 'cliente'));
+        $clientes = Clientes::find($id);        
+        return view('clientes.regClientes', compact('modo', 'clientes'));
     }
 
 
@@ -73,5 +74,6 @@ class ClienteController extends Controller
     {
         $cliente = Clientes::find($id);
         $cliente->update($request->all());
+        return redirect()->route('buscar.Clientes')->with('success', 'Cliente actualizado exitosamente.');
     }
 }

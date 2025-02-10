@@ -1,3 +1,6 @@
 import {detectaridBtn} from '../componentes/detectarBotones'
+import {buscarCliente}  from '../componentes/BucarClientes'  
 
-detectaridBtn//solo tenerlo presente es necesario para que ejecute la funcionalidad
+detectaridBtn()
+buscarCliente()
+

@@ -59,7 +59,7 @@ class ServiciosController extends Controller
             'maximoServicios' =>'required|integer|max:255',
             // Agrega más reglas de validación según sea necesario
         ]);
-        $status = $request->has('status') ? '1' : '0';
+        $status = $request->has('status') ? 'activo' : 'inactivo';
         // Actualizar el servicio
         
 

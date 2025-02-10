@@ -31,9 +31,10 @@
                                 </div>
                                 <div class="row p-2 mt-3 justify-content-center">
                                     <div class="col-3">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input StatusBtn" type="checkbox" name="status" id="status" {{ $servicio->status ? 'checked' :''  }} >
-                                            <label class="form-check-label"  value="{{$servicio->status}}" for="flexSwitchCheckChecked">{{ $servicio->status ? 'Servicio Activado' :'Servicio Desactivado'  }}</label>
+                                        
+                                        <div class="form-check form-switch">                                            
+                                            <input class="form-check-input StatusBtn" type="checkbox" name="status" id="status" {{ $servicio->status == 'ACTIVO' ? 'checked' :''  }} >
+                                            <label class="form-check-label"   for="flexSwitchCheckChecked">{{ $servicio->status == 'ACTIVO' ? 'Servicio Activado' :'Servicio Desactivado'  }}</label>
                                         </div>
                                     </div>
                                 </div>

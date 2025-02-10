@@ -1,9 +1,23 @@
 <x-header />
+@vite('resources/js/componentes/BucarClientes.js')
+@vite('resources/js/clientes/clientes.js')
 
 <div class="container">
     <div class="row mt-4 justify-content-center">
         <div class="col-12 text-center">
             <h1>Lista de Clientes</h1>
+            
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
 
         </div>
 
@@ -13,7 +27,7 @@
             <a href="{{ route('regClientes')}}" class="btn btn-primary">Registrar Cliente</a>
         </div>
         <div class="col-6">
-            <input type="text" class="form-control"  id="searchInput" placeholder="Buscar Cliente">
+            <input type="text" class="form-control searchInput"  id="searchInput" placeholder="Buscar Cliente">
 
 
         </div>
@@ -53,8 +67,6 @@
                                     class="btn btn-primary ">
                                     Editar
                                 </a>
-
-
                             </td>
                             <!-- Agrega más columnas según sea necesario -->
                         </tr>
@@ -64,18 +76,6 @@
         </div>
         <footer class="col-12">
 
-            @if(session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if(session('error'))
-                <div class="alert alert-danger">
-                    {{ session('error') }}
-                </div>
-            @endif
         </footer>
     </div>
 </div>
-@vite('resources/js/componentes/BucarClientes.js')

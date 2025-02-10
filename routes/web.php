@@ -24,11 +24,11 @@ route::post('/afiliados/create',  [AfiliadosController::class, 'storeAFiliados']
 //BuscarAfiliados
 Route::get('/BuscarAfiliados',  [AfiliadosController::class, 'index'])->name("buscar.afiliados")->middleware('auth');
 //Eliminar servicio
-Route::delete('/AFiliados/delete/{id}',  [AfiliadosController::class, 'eliminarServicio'])->name('servicios.destroy')->middleware('auth');
+Route::delete('/AFiliados/delete/{id}',  [AfiliadosController::class, 'eliminarServicio'])->name('afiliados.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/AFiliados/{id}/editar', [AfiliadosController::class, 'edit'])->name('servicios.editar')->middleware('auth');
+Route::get('/AFiliados/{id}/editar', [AfiliadosController::class, 'edit'])->name('afiliados.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
-Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('servicios.actualizar')->middleware('auth');
+Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('afiliados.actualizar')->middleware('auth');
 
 //clientes
 //Registro
