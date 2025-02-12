@@ -19,29 +19,33 @@ class ExcelController extends Controller
         echo $file;
         // // Leer el archivo Excel
         $data = Excel::toArray([], $file);
-
+        $data_sin_cabecera = array_slice($data[0], 1);
         return response()->json([
             'message' => 'Contenido del Excel',
-            'data' => $data
+            'data' => $data_sin_cabecera
         ], 200);
         // Aquí procesarías los datos y los insertarías en la base de datos
-        // foreach ($data[0] as $row) {
-        //     // Suponiendo que tienes un modelo llamado 'MiModelo'
-        //     echo $row[0];
-        //     echo $row[1];
-        //     echo $row[2];
-        //     echo $row[3];
-        //     echo $row[4];
-        //     echo $row[5];
-        //     echo $row[6];
-        //     echo $row[7];
-        //     echo $row[8];
-            // Clientes::create([
-            //     'campo1' => $row[0],
-            //     'campo2' => $row[1],
-            //     // ... mapear los campos del Excel a la base de datos
-            // ]);
-        // }
+        foreach ($data[0] as $row) {
+            // Suponiendo que tienes un modelo llamado 'MiModelo'
+            Clientes::create([
+                'cedula' => $row[0],
+                'rif' => $row[1],
+                'primer_nombre' => $row[2],
+                'segundo_nombre' => $row[3],
+                'primer_apellido' => $row[4],
+                'segundo_apellido' => $row[5],
+                'fechaNacimiento' => $row[6],   
+                'telefono' => $row[7],
+                'correo' => $row[8],
+                'empresa' => $row[9],                
+                'direccion' => $row[10],
+                'Nacionalidad' => $row[11],
+            ]);
+
+                    
+
+            
+        }
 
         // return response()->json([
         //     'message' => 'Archivo procesado correctamente',
