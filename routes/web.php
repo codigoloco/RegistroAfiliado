@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\EjecutivosController;
-use App\Http\Controllers\GetController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\ParentescosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportesController;
+
 
 Auth::routes();
 
@@ -96,3 +97,7 @@ Route::get('/usuarios',  [UserController::class, 'inicio'])->name('usuarios')->m
 Route::get('/auditoria',  [AuditoriaController::class, 'inicio'])->name('auditoria')->middleware('auth');
 
 Route::get('/reportes',  [ReportesController::class, 'inicio'])->name('reportes')->middleware('auth');
+
+
+
+Route::post('/excel/importar',  [ExcelController::class, 'cargaMasiva'])->middleware('auth');

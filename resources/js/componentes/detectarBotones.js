@@ -8,6 +8,7 @@ export function detectaridBtn() {
     let moduloData;
     let opcion;
     let valor;
+    let archivo;
     botones.forEach(botones => {
         botones.addEventListener("click", function (event) {
             //escucha todos los click en el documento
@@ -18,6 +19,7 @@ export function detectaridBtn() {
             opcion = new opciones();
             moduloData=event.target;
             modulo=moduloData.dataset.modulo
+            
 
             switch (idAccion) {
                 case "eliminarBeneficiarios":
@@ -38,6 +40,10 @@ export function detectaridBtn() {
                     break;
                 case "EliminarServicio":                    
                     opcion.eliminar(valor,modulo);
+                    break;
+                case "importarExcel":
+                    archivo =document.getElementById('fileInput')
+                    opcion.importar(archivo,modulo);
                     break;
                 default:
                     // Código para manejar otras acciones o casos no contemplados
@@ -90,5 +96,23 @@ export class opciones {
     editar=(id,modulo)=>{
         console.log(id,modulo);
     }
-
+    importar = (archivo,modulo) => {
+        console.log(archivo.files[0],modulo);
+        const formData = new FormData();
+        formData.append('file', archivo.files[0]);
+        
+        axios.post(modulo, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(response => {
+            console.log('Archivo importado con éxito:', response.data);
+            // Aquí puedes agregar lógica adicional después de una importación exitosa
+        })
+        .catch(error => {
+            console.error('Hubo un error al importar:', error);
+            alert('Error al importar el archivo');
+        });
+    }
 }

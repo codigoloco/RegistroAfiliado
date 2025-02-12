@@ -2,9 +2,7 @@
 <div class="container">
     <header>
         <h1>Gestionar Afiliaciones</h1>
-        <button type="button" class="btn btn-primary">
-            AgregarExcel
-        </button>
+        <x-Carga-excel />
     </header>
     <div class="row">
         <div class="col-12">
@@ -38,3 +36,5 @@
     </div>
 </div>
 <x-footer />
+
+@vite(['resources/js/afiliados/addAfiliado.js'])

@@ -15,16 +15,17 @@ return new class extends Migration
         Schema::create('beneficiarios', function (Blueprint $table) {
             $table->id(); // Columna autoincremental para el ID
             
-            $table->string('nombre'); // Nombre
-            $table->string('apellido'); // Apellido
+            $table->string('primer_nombre'); // Nombre
+            $table->string('segundo_nombre'); // Nombre
+            $table->string('primer_apellido'); // Apellido
+            $table->string('segundo_apellido'); // Apellido
             $table->string('nacionalidad'); // Nacionalidad
-            $table->string('cedula')->unique(); // Cédula (única)
-            $table->string('rif')->unique(); // RIF (único)
+            $table->string('cedula')->unique(); // Cédula (única)            
             $table->date('fechaNacimiento'); // Fecha de nacimiento
             $table->string('direccion'); // Dirección
             $table->string('telefono'); // Teléfono (mejor como string para incluir códigos de área)
             $table->string('celular'); // Celular (mejor como string para incluir códigos de área)
-            $table->bigInteger('parentescos_id')->references('id')->on('parentescos');;   
+            $table->bigInteger('parentesco_id')->references('id')->on('parentescos');;   
             $table->bigInteger("afiliado_id")->references('id')->on('afiliado');;
             $table->bigInteger('servicio_id')->references('id')->on('servicios'); ;                 
             
