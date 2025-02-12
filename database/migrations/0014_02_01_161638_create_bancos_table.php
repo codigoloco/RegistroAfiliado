@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {/// AGREGAR BANCO CLIENTEs... CORREGIR 
-        Schema::create('bancos', function (Blueprint $table) {
+        Schema::create('Bancos', function (Blueprint $table) {
             $table->id();
 
-            $table->string('Bancos')->nullable();
+            $table->string('Banco')->nullable();
             $table->integer('Codigo')->nullable();            
             $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');            
             $table->timestamps();
