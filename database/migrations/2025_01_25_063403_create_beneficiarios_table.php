@@ -21,12 +21,10 @@ return new class extends Migration
             $table->string('segundo_apellido'); // Apellido
             $table->string('nacionalidad'); // Nacionalidad
             $table->string('cedula')->unique(); // Cédula (única)            
-            $table->date('fechaNacimiento'); // Fecha de nacimiento
-            $table->string('direccion'); // Dirección
+            $table->date('fechaNacimiento'); // Fecha de nacimiento            
             $table->string('telefono'); // Teléfono (mejor como string para incluir códigos de área)
             $table->string('celular'); // Celular (mejor como string para incluir códigos de área)
-            $table->bigInteger('parentesco_id')->references('id')->on('parentescos');;   
-            $table->bigInteger("afiliado_id")->references('id')->on('afiliado');;
+            $table->bigInteger('parentesco_id')->references('id')->on('parentescos');;               
             $table->bigInteger('servicio_id')->references('id')->on('servicios'); ;                 
             
             $table->string('empresa'); // Empresa

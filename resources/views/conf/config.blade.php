@@ -56,5 +56,16 @@
             </div>
         </div>
     </div>
+    <div class="col-3 p-2 m-2 g-2">
+        <div class="card text-center">
+            <div class="card-header">
+                Configuracion
+            </div>
+            <div class="card-body">
+                <h5 class="card-title"> Bancos </h5>
+                <a class="btn btn-secondary" href="{{ route('config.Bancos') }}">Ingresar</a>
+            </div>
+        </div>
+    </div>
 
 </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AfiliadosController;
 use App\Http\Controllers\AuditoriaController;
+use App\Http\Controllers\BancosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
@@ -12,7 +13,7 @@ use App\Http\Controllers\ParentescosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportesController;
-
+use App\Models\Bancos;
 
 Auth::routes();
 
@@ -88,6 +89,15 @@ Route::delete('/ejecutivos/delete/{id}',  [EjecutivosController::class, 'elimina
 Route::get('/ejecutivos/{id}/editar', [EjecutivosController::class, 'edit'])->name('Ejecutivos.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/ejecutivos/{id}', [EjecutivosController::class, 'update'])->name('Ejecutivos.actualizar')->middleware('auth');
+
+//Bancos
+Route::get('/conf/Bancos',  [BancosController::class, 'bancos'])->name('config.Bancos')->middleware('auth');
+
+
+
+
+
+
 
 
 
