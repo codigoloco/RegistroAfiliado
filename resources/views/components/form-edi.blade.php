@@ -73,8 +73,8 @@
         </div>        
         <div class="row mb-3">
             <div class="col-3">
-                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" value="{{ $cliente->fecha_nacimiento }}" id="fechaNacimiento" name="fechaNacimiento" min="2018-01-01" max="2018-12-31"  required>
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" value="{{ $cliente->fecha_nacimiento }}" id="fecha_nacimiento" name="fecha_nacimiento" min="1990-01-01" max="2025-12-31"  required>
             </div>
             <div class="col-3">
                 <label for="empresa" class="form-label">Empresa</label>

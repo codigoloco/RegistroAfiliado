@@ -44,7 +44,7 @@ class ClienteController extends Controller
             $cliente->nacionalidad = $request->Nacionalidad;
             $cliente->cedula   = $request->cedula;
             $cliente->rif = $request->rif;
-            $cliente->fecha_nacimiento = $request->fechaNacimiento;
+            $cliente->fecha_nacimiento = $request->fecha_nacimiento;
             $cliente->telefono = $request->telefono;
             $cliente->correo = $request->correo;
             $cliente->empresa = $request->empresa;

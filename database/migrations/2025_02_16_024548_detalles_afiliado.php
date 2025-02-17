@@ -16,11 +16,14 @@ return new class extends Migration
             $table->id(); // Columna autoincremental para el ID del afiliado
             $table->bigInteger('afiliado_id')->unsigned(); // Clave foránea a la tabla afiliados
             $table->bigInteger('beneficiario_id')->unsigned(); // Clave foránea a la tabla bancos
-            
-            $table->timestamps(); // Columnas created_at y updated_at
-            
+            $table->bigInteger('servicio_id')->unsigned();;
+                        
             $table->foreign("afiliado_id")->references("id")->on("afiliados");
             $table->foreign("beneficiario_id")->references("id")->on("beneficiarios");
+            $table->foreign("servicio_id")->references("id")->on("servicios");
+            
+            $table->timestamps(); // Columnas created_at y updated_at
+
             
         });
     }

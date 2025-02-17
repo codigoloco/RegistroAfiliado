@@ -13,7 +13,4 @@ class parentescos extends Model
     {
         return self::all();
     }
-    protected $fillable = [
-        'nombre'        
-    ];
 }

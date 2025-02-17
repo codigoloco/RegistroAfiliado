@@ -6,7 +6,7 @@ use App\Models\parentescos;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class parentescoSeeder extends Seeder
+class parentescosSeeder extends Seeder
 {
     /**
      * Run the database seeds.

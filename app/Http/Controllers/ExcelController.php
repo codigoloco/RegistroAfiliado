@@ -34,7 +34,7 @@ class ExcelController extends Controller
                 'segundo_nombre' => $row[3],
                 'primer_apellido' => $row[4],
                 'segundo_apellido' => $row[5],
-                'fechaNacimiento' => $row[6],   
+                'fecha_nacimiento' => $row[6],   
                 'telefono' => $row[7],
                 'correo' => $row[8],
                 'empresa' => $row[9],                

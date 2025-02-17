@@ -91,9 +91,9 @@
 
                                     <div class="row">
                                         <div class="col-2 mb-3">
-                                            <label for="FechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                                            <label for="fecha_nacimiento" class="form-label">Fecha Nacimiento</label>
                                             <input type="date" min="1900-12-31" max="2018-99-31"
-                                                class="form-control" id="FechaNacimiento" name="FechaNacimiento"
+                                                class="form-control" id="fecha_nacimiento" name="fecha_nacimiento"
                                                 required>
                                         </div>
                                         <div class="col-2 mb-3">

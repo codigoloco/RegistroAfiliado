@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $nacionalidad
  * @property string $cedula
  * @property string $rif
- * @property string $fechaNacimiento
+ * @property string $fecha_nacimiento
  * @property mixed $correo
  * @property string $status
  * 
