@@ -13,6 +13,8 @@ use App\Models\detalles_afiliado;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use App\Models\Afiliado;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 use function Laravel\Prompts\error;
 
@@ -70,8 +72,12 @@ class AfiliadosController extends Controller
             $afiliado->ejecutivo_id  = $request->ejecutivo;
             $afiliado->status = 1;
 
-            $afiliado->save();
-
+            $savedAfiliado = $afiliado->save();
+            if(!$savedAfiliado) {
+                DB::rollBack();
+                return redirect()->back()->with('Error', 'Falló al guardar el afiliado');
+            }
+            dd($savedAfiliado);
             // Crear o encontrar beneficiario
             $beneficiario = Beneficiarios::firstOrCreate(
                 ['cedula' => $request->CedulaBeneficiario],
@@ -89,24 +95,60 @@ class AfiliadosController extends Controller
                     'convenio' => 'INACTIVO',
                 ]
             );
-
+            
+            if(!$beneficiario->exists) {
+                DB::rollBack();
+                return redirect()->back()->with('Error', 'Falló al crear beneficiario');
+            }
+            
             // Crear detalle de afiliación
             $detalles_afiliado = new detalles_afiliado();
             $detalles_afiliado->afiliado_id = $afiliado->id;
             $detalles_afiliado->beneficiario_id = $beneficiario->id;
             $detalles_afiliado->servicio_id = $afiliado->servicio_id;
-            $detalles_afiliado->save();
-
+            
+            $savedDetalle = $detalles_afiliado->save();
+            if(!$savedDetalle) {
+                DB::rollBack();
+                return redirect()->back()->with('Error', 'Falló al guardar detalle de afiliación');
+            }
+            
             DB::commit();
+            
+            $mensaje = "Afiliación completa: ";
+            $mensaje .= $savedAfiliado ? "✓ Afiliado guardado | " : "✗ Falló afiliado | ";
+            $mensaje .= $beneficiario->wasRecentlyCreated ? "✓ Beneficiario nuevo | " : "✓ Beneficiario existente | ";
+            $mensaje .= $savedDetalle ? "✓ Detalle guardado" : "✗ Falló detalle";
 
-            return redirect()->route('afiliados')->with('Procesado', 'Afiliado creado correctamente.');
-            
+            return redirect()->route('afiliados')
+                ->with('Procesado', $mensaje);
+
         } catch (\Throwable $th) {
-            DB::rollBack();
-            
+            DB::rollBack();            
             return redirect()->back()
                 ->with('Error', 'Error al crear el afiliado: ' . $th->getMessage())
                 ->withInput();
         }
+    }
+
+    public function exportar()
+    {
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="afiliados.csv"',
+        ];
+
+        return response()->streamDownload(function () {
+            $handle = fopen('php://output', 'w');
+            
+            // Encabezados
+            fputcsv($handle, ['Cédula', 'Nombre', 'Teléfono']);
+            
+            // Datos de prueba
+            fputcsv($handle, ['V-123456', 'Juan Pérez', '04121234567']);
+            fputcsv($handle, ['V-654321', 'María Gómez', '04241234567']);
+            
+            fclose($handle);
+        }, 'afiliados.csv', $headers);
     }
 }

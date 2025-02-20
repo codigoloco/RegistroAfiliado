@@ -111,3 +111,5 @@ Route::get('/reportes',  [ReportesController::class, 'inicio'])->name('reportes'
 
 
 Route::post('/excel/importar',  [ExcelController::class, 'cargaMasiva'])->middleware('auth');
+
+Route::get('/afiliados/exportar', [AfiliadosController::class, 'exportar'])->name('afiliados.exportar');

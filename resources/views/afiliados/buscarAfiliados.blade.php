@@ -3,6 +3,11 @@
     <header>
         <h1>Gestionar Afiliaciones</h1>
         <x-Carga-excel />
+        
+        <a href="{{ route('afiliados.exportar') }}" class="btn btn-success" download>
+            Exportar a CSV
+        </a>
+        
     </header>
     <div class="row">
         <div class="col-12">
@@ -18,16 +23,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($Afiliados as $afiliado)
-                    <tr>
-                        <td>{{ $afiliado->id }}</td>
-                        <td>{{ $afiliado->cedula }}</td>
-                        <td>{{ $afiliado->primer_nombre }} {{$afiliado->segundo_nombre}}</td>
-                        <td>{{ $afiliado->nombre_servicio}}</td>
-                        <td><button type='button' class='btn btn-secondary' data-modulo='afiliados/editar' >edicion</button></td>
+                    @foreach ($Afiliados as $afiliado)
+                        <tr>
+                            <td>{{ $afiliado->id }}</td>
+                            <td>{{ $afiliado->cedula }}</td>
+                            <td>{{ $afiliado->primer_nombre }} {{ $afiliado->segundo_nombre }}</td>
+                            <td>{{ $afiliado->nombre_servicio }}</td>
+                            <td><button type='button' class='btn btn-secondary'
+                                    data-modulo='afiliados/editar'>edicion</button></td>
 
-                        <!-- Agrega más columnas según sea necesario -->
-                    </tr>
+                            <!-- Agrega más columnas según sea necesario -->
+                        </tr>
                     @endforeach
                 </tbody>
             </table>

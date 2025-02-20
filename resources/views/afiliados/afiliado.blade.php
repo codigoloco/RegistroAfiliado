@@ -159,3 +159,4 @@
 </div>
 @vite('resources/js/afiliados/addAfiliado.js')
 <x-footer />
+
