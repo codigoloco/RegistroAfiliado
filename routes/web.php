@@ -9,6 +9,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\EjecutivosController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\GetController;
 use App\Http\Controllers\ParentescosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\UserController;
@@ -112,4 +113,4 @@ Route::get('/reportes',  [ReportesController::class, 'inicio'])->name('reportes'
 
 Route::post('/excel/importar',  [ExcelController::class, 'cargaMasiva'])->middleware('auth');
 
-Route::get('/afiliados/exportar', [AfiliadosController::class, 'exportar'])->name('afiliados.exportar');
+Route::get('/afiliados/exportar', [GetController::class, 'importarExcel'])->name('importarExcel');
