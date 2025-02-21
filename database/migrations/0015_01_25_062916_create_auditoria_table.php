@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string("detalle");
             $table->string("acciones");
             
-            $table->bigInteger('ejecutivo_id')->unsigned();
-            $table->foreign("ejecutivo_id")->references("id")->on("ejecutivos");
+            $table->bigInteger('users_id')->unsigned();
+            $table->foreign("users_id")->references("id")->on("users");
 
             $table->timestamps();
             

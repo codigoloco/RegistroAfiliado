@@ -2,17 +2,19 @@
 
 use App\Http\Controllers\AfiliadosController;
 use App\Http\Controllers\AuditoriaController;
+use App\Http\Controllers\BancosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConfigController;
 use App\Http\Controllers\EjecutivosController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\GetController;
 use App\Http\Controllers\ParentescosController;
 use App\Http\Controllers\ServiciosController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ReportesController;
-
+use App\Models\Bancos;
 
 Auth::routes();
 
@@ -89,6 +91,15 @@ Route::get('/ejecutivos/{id}/editar', [EjecutivosController::class, 'edit'])->na
 // Ruta para procesar la actualización del servicio
 Route::put('/ejecutivos/{id}', [EjecutivosController::class, 'update'])->name('Ejecutivos.actualizar')->middleware('auth');
 
+//Bancos
+Route::get('/conf/Bancos',  [BancosController::class, 'bancos'])->name('config.Bancos')->middleware('auth');
+
+
+
+
+
+
+
 
 
 Route::get('/usuarios',  [UserController::class, 'inicio'])->name('usuarios')->middleware('auth');
@@ -101,3 +112,5 @@ Route::get('/reportes',  [ReportesController::class, 'inicio'])->name('reportes'
 
 
 Route::post('/excel/importar',  [ExcelController::class, 'cargaMasiva'])->middleware('auth');
+
+Route::get('/afiliados/exportar', [GetController::class, 'importarExcel'])->name('importarExcel');

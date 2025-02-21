@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');            // Clave foránea a la tabla users
             $table->timestamps();
         });
+        
     }
 
     /**

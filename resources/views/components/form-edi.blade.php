@@ -1,7 +1,7 @@
 
+@vite('resources/js/clientes/form.js')
 <form action="{{ $action }}" method="{{$metodo}}">
-    {{ $action }}
-    {{ $metodo }}	
+
     @csrf
     @if($modo != 'crear')
     @method('PUT')
@@ -34,16 +34,16 @@
     <div class="col-2">
         <label for="cedula" class="form-label">Cédula</label>
         <input type="text" 
-        class="form-control" 
+        class="form-control cedula" 
         value="{{ old('cedula', $cliente->cedula ?? '') }}" 
         id="cedula" 
         name="cedula" 
-        pattern="\d{1,9}" inputmode="numeric" maxlength="8" placeholder="99.999.999"
+        placeholder="99.999.999"
         required>
     </div>
     <div class="col-3">
         <label for="rif" class="form-label">RIF</label>
-        <input type="text" class="form-control" value="{{ $cliente->rif }}" id="rif" name="rif" required>
+        <input type="text" class="form-control rif" value="{{ $cliente->rif }}" id="rif" name="rif" required>
     </div>
     <div class="row mb-3">
         <div class="col-3">
@@ -57,7 +57,7 @@
         <div class="row mb-3">
             <div class="col-3">
                 <label for="telefono" class="form-label">Teléfono</label>
-                <input type="text" class="form-control" value="{{ $cliente->telefono }}" id="telefono" name="telefono" required>
+                <input type="text" class="form-control" value="{{ $cliente->telefono }}" id="Telefono" name="telefono" required>
             </div>
             <div class="col-3">
                 <label for="correo" class="form-label">Correo</label>
@@ -73,8 +73,8 @@
         </div>        
         <div class="row mb-3">
             <div class="col-3">
-                <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-                <input type="date" class="form-control" value="{{ $cliente->fecha_nacimiento }}" id="fechaNacimiento" name="fechaNacimiento" required>
+                <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento</label>
+                <input type="date" class="form-control" value="{{ $cliente->fecha_nacimiento }}" id="fecha_nacimiento" name="fecha_nacimiento" min="1990-01-01" max="2025-12-31"  required>
             </div>
             <div class="col-3">
                 <label for="empresa" class="form-label">Empresa</label>
