@@ -1,4 +1,5 @@
 <x-header />
+@vite('resources/js/afiliados/getAfiliado.js')
 <div class="container">
     <header>
 
@@ -8,7 +9,10 @@
         <div class="col-9">
             <x-Carga-excel :title="'Importar Excel'" />
         </div>
-
+        <div class="col-3">
+            <input type="text" name="buscar" id="searchInput" placeholder="Buscar..." class="form-control mb-3">
+        </div>
+        <hr>
 
         <div class="row">
             <div class="col-12">
@@ -23,11 +27,11 @@
                             <!-- Agrega más columnas según sea necesario -->
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id='afiliadosTabla'>
                         @foreach ($Afiliados as $afiliado)
                             <tr>
-                                <td>{{ $afiliado->id }}</td>
-                                <td>{{ $afiliado->cedula }}</td>
+                                <td value='{{ $afiliado->id }}'> {{ $afiliado->id }}</td>
+                                <td value='{{ $afiliado->cedula }}'> {{ $afiliado->cedula }}</td>
                                 <td>{{ $afiliado->primer_nombre }} {{ $afiliado->segundo_nombre }}</td>
                                 <td>{{ $afiliado->nombre_servicio }}</td>
                                 <td><button type='button' class='btn btn-secondary'
@@ -43,5 +47,3 @@
         </div>
     </div>
     <x-footer />
-
-    @vite(['resources/js/afiliados/addAfiliado.js'])

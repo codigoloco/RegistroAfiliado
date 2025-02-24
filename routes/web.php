@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ConfigController;
+use App\Http\Controllers\ConveniosController;
 use App\Http\Controllers\EjecutivosController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\GetController;
@@ -94,6 +95,11 @@ Route::put('/ejecutivos/{id}', [EjecutivosController::class, 'update'])->name('E
 //Bancos
 Route::get('/conf/Bancos',  [BancosController::class, 'bancos'])->name('config.Bancos')->middleware('auth');
 
+//Convenios
+//INICIO
+route::get('/convenios',  [ConveniosController::class, 'inicio'])->name('convenios.inicio')->middleware('auth');
+Route::post('/convenios/create',  [ConveniosController::class, 'storeConvenios'])->name('convenios.store')->middleware('auth');
+    
 
 
 

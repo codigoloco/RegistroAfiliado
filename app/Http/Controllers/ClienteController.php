@@ -72,8 +72,24 @@ class ClienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $cliente = Clientes::find($id);
-        $cliente->update($request->all());
+        $cliente = Clientes::findOrFail($id); 
+    
+        $cliente->primer_nombre = $request->primerNombre;
+        $cliente->segundo_nombre = $request->segundoNombre;
+        $cliente->primer_apellido = $request->primerApellido;
+        $cliente->segundo_apellido = $request->segundoApellido;
+        $cliente->nacionalidad = $request->Nacionalidad;
+        $cliente->cedula = $request->cedula;
+        $cliente->rif = $request->rif;
+        $cliente->fecha_nacimiento = $request->fecha_nacimiento;
+        $cliente->telefono = $request->telefono;
+        $cliente->correo = $request->correo;
+        $cliente->empresa = $request->empresa;
+        $cliente->status = $request->status;
+        $cliente->direccion = $request->direccion;
+        
+        $cliente->save();
+    
         return redirect()->route('buscar.Clientes')->with('success', 'Cliente actualizado exitosamente.');
     }
 }

@@ -23,15 +23,14 @@
 
     </div>
     <div class="row justify-content-center p-2">
-        <div class="col-2">            
-            <a href="{{ route('regClientes')}}" class="btn btn-primary">Registrar Cliente</a>
+        <div class="col-3 ">            
+            <a href="{{ route('regClientes')}}" class="btn btn-primary ">Registrar Cliente</a>
         </div>
-        <div class="col-6">
+        <div class="col flexbox justify-content-start">
             <input type="text" class="form-control searchInput"  id="searchInput" placeholder="Buscar Cliente">
-
-
         </div>
     </div>
+    <hr>
     <div class="row justify-content-center">
         <div class="col">
             <table class="table table-striped">

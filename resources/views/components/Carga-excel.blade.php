@@ -14,10 +14,10 @@
 
                     <div class="col-3">
                         <a href="{{ route('importarExcel') }}" class="btn btn-warning" download>
-                            Carga Masiva <br> Formato
+                            Carga Masiva
                         </a>
                     </div>
-
+                    
                 </div>
             </form>
         </div>

@@ -35,7 +35,7 @@ class AfiliadosController extends Controller
             'clientes.cedula as cedula'
         )
             ->join('servicios', 'afiliados.servicio_id', '=', 'servicios.id')
-            ->join('clientes', 'afiliados.servicio_id', '=', 'clientes.id')
+            ->join('clientes', 'afiliados.cliente_id', '=', 'clientes.id')
 
             ->get();
         return view('afiliados.buscarAfiliados', compact('Afiliados'));

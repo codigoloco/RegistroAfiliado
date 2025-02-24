@@ -42,9 +42,9 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title">Desafiliaciones</h5>
+                            <br>
                             <p class="card-text">un total de: {{ $afiliaciones->where('status', 'INACTIVO')->count() }} desafiliaciones</p>
-                            <p class="card-text">Procese las desafiliaciones de manera rápida y efectiva.</p>
-                            <a href="#" class="btn btn-primary">Gestionar Desafiliaciones</a>
+                            <p class="card-text">Procese las desafiliaciones de manera rápida y efectiva.</p>                            
                         </div>
                     </div>
                 </div>
@@ -62,10 +62,10 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h5 class="card-title">Clientes</h5>    
+                            <h5 class="card-title">Clientes</h5>                                
                             <p class="card-text">un total de: {{ $clientes->count() }} clientes</p>
                             <p class="card-text">Administre la información de sus clientes de forma centralizada.</p>
-                            <a href="{{ route('buscar.afiliados') }}" class="btn btn-primary">Gestionar Clientes</a>
+                            <a href="{{ route('buscar.Clientes') }}" class="btn btn-primary">Gestionar Clientes</a>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Beneficiarios</h5>
                             <p class="card-text">Gestione los beneficiarios asociados a sus clientes.</p>
-                            <a href="#" class="btn btn-primary">Gestionar Beneficiarios</a>
+                            <p>FALTA AGREGAR LOS BENEFICIARIOS UN CONTEO</p>
+
                         </div>
                     </div>
                 </div>
