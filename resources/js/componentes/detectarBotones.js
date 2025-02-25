@@ -97,7 +97,7 @@ export class opciones {
         console.log(id,modulo);
     }
     importar = (archivo,modulo) => {
-        console.log(archivo.files[0],modulo);
+        
         const formData = new FormData();
         formData.append('file', archivo.files[0]);
         

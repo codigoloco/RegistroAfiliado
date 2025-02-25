@@ -57,17 +57,10 @@ export function buscarCliente() {
                 enviar.disabled = false;
                 const clienteEncontrado = indiceClientes[cedulaLimpia];
                 const dataUser = document.querySelector('.data-user');
-                dataUser.innerHTML = `
-                    <div style="
-                        position: fixed;
-                        display: flex;
-                        gap: 10px;
-                        z-index: 100;
-                    ">
-                        <p><strong>Nombre:</strong> ${clienteEncontrado.primer_nombre} ${clienteEncontrado.segundo_nombre}</p>
-                        <p><strong>Apellido:</strong> ${clienteEncontrado.primer_apellido} ${clienteEncontrado.segundo_apellido}</p>
-                        <p><strong>Cédula:</strong> ${clienteEncontrado.cedula}</p>
-                    </div>
+                dataUser.innerHTML = `                    
+                        <div class='col-3'><strong>Nombre:</strong> ${clienteEncontrado.primer_nombre} ${clienteEncontrado.segundo_nombre}</div>
+                        <div class='col-3'><strong>Apellido:</strong> ${clienteEncontrado.primer_apellido} ${clienteEncontrado.segundo_apellido}</div>
+                        <div class='col-3 cedulaObtenida' id = '${clienteEncontrado.id}' ><strong>Cédula:</strong> ${clienteEncontrado.cedula}</div>
                 `;
             }
         } catch {

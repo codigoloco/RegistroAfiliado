@@ -44,12 +44,22 @@
                                         id="eliminarBeneficiarios">-</button></div>
 
                             </div>
-                            <div class="data-user">
-
+                            <div class="data-user row" >
+                                <br>
                             </div>
                             <div id="beneficiarios-container">
                                 <div class="row beneficiario">
                                     <div class="row">
+
+                                        <div class="col-2 mb-3 mt-5">
+                                            <label for="Parentesco" class="form-label">Parentesco</label>
+                                            <select class="form-select" name="Parentesco" id="Parentesco">
+                                                <option selected>Seleccione</option>
+                                                @foreach ($parentescos as $paren)
+                                                    <option value="{{ $paren->id }}">{{ $paren->nombre }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                         <div class="col-2 mb-3 mt-5">
                                             <label for="CedulaBeneficiario" class="form-label">Cedula
                                                 Beneficiario</label>
@@ -96,15 +106,7 @@
                                                 class="form-control" id="fecha_nacimiento" name="fecha_nacimiento"
                                                 required>
                                         </div>
-                                        <div class="col-2 mb-3">
-                                            <label for="Parentesco" class="form-label">Parentesco</label>
-                                            <select class="form-select" name="Parentesco" id="Parentesco">
-                                                <option selected>Seleccione</option>
-                                                @foreach ($parentescos as $paren)
-                                                    <option value="{{ $paren->id }}">{{ $paren->nombre }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+
                                         <div class="col-2 mb-3">
                                             <label for="Nacionalidad" class="form-label">Nacionalidad</label>
                                             <select class="form-select" name="Nacionalidad" id="Nacionalidad">
@@ -159,4 +161,3 @@
 </div>
 @vite('resources/js/afiliados/addAfiliado.js')
 <x-footer />
-

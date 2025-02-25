@@ -50,6 +50,8 @@ Route::delete('/clientes/delete/{id}',  [ClienteController::class, 'eliminarServ
 Route::get('/clientes/{id}/editar', [ClienteController::class, 'abrirEdicion'])->name('clientes.update')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.actualizar')->middleware('auth');
+//obtenerDataCliente
+route::get('/clientes/get/{id}',  [ClienteController::class, 'getClientes'])->middleware('auth');
 
 //configuracion
 //Vista Configuraciones

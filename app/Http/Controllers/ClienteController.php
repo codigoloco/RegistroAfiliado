@@ -12,11 +12,19 @@ class ClienteController extends Controller
         $clientes = Clientes::all();
         return view('clientes.index', compact('clientes'));
     }
-    public function getClientes()
+    public function getClientes($id = '')
     {
-        $clientes = Clientes::all();
-        return response()->json($clientes);
+                
+        if (!$id) {
+            $clientes = Clientes::all();
+            return response()->json($clientes);
+        } else if($id) {
+            $clientes = Clientes::find($id);
+            return response()->json($clientes);
+        }
+        
     }
+
     public function create(Clientes $clientes)
     {
         $modo = 'crear';
@@ -25,9 +33,9 @@ class ClienteController extends Controller
     }
 
     public function abrirEdicion($id)
-    {       
+    {
         $modo = 'editar';
-        $clientes = Clientes::find($id);        
+        $clientes = Clientes::find($id);
         return view('clientes.regClientes', compact('modo', 'clientes'));
     }
 
@@ -72,8 +80,8 @@ class ClienteController extends Controller
 
     public function update(Request $request, $id)
     {
-        $cliente = Clientes::findOrFail($id); 
-    
+        $cliente = Clientes::findOrFail($id);
+
         $cliente->primer_nombre = $request->primerNombre;
         $cliente->segundo_nombre = $request->segundoNombre;
         $cliente->primer_apellido = $request->primerApellido;
@@ -87,9 +95,9 @@ class ClienteController extends Controller
         $cliente->empresa = $request->empresa;
         $cliente->status = $request->status;
         $cliente->direccion = $request->direccion;
-        
+
         $cliente->save();
-    
+
         return redirect()->route('buscar.Clientes')->with('success', 'Cliente actualizado exitosamente.');
     }
 }
