@@ -44,11 +44,11 @@ Route::get('/clientes',  [ClienteController::class, 'index'])->name('buscar.Clie
 Route::get('/clientes/get',  [ClienteController::class, 'getClientes'])->middleware('auth');
 //Registrar Clientes
 Route::post('/clientes',  [ClienteController::class, 'storeClientes'])->name('clientes.store')->middleware('auth');
-//Eliminar servicio
+//Eliminar Clientes
 Route::delete('/clientes/delete/{id}',  [ClienteController::class, 'eliminarServicio'])->name('clientes.destroy')->middleware('auth');
 //VistaEdicion
 Route::get('/clientes/{id}/editar', [ClienteController::class, 'abrirEdicion'])->name('clientes.update')->middleware('auth');
-// Ruta para procesar la actualización del servicio
+// Ruta para procesar la actualización del Clientes
 Route::put('/clientes/{id}', [ClienteController::class, 'update'])->name('clientes.actualizar')->middleware('auth');
 //obtenerDataCliente
 route::get('/clientes/get/{id}',  [ClienteController::class, 'getClientes'])->middleware('auth');

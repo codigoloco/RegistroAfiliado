@@ -34,7 +34,7 @@
                                 <td value='{{ $afiliado->cedula }}'> {{ $afiliado->cedula }}</td>
                                 <td>{{ $afiliado->primer_nombre }} {{ $afiliado->segundo_nombre }}</td>
                                 <td>{{ $afiliado->nombre_servicio }}</td>
-                                <td><button type='button' class='btn btn-secondary'
+                                <td><button type='button' id='EditarServicio' class='btn btn-secondary'
                                         data-modulo='afiliados/editar'>edicion</button></td>
 
                                 <!-- Agrega más columnas según sea necesario -->

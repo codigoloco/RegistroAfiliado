@@ -13,13 +13,13 @@ export function detectaridBtn() {
         botones.addEventListener("click", function (event) {
             //escucha todos los click en el documento
             idAccion = event.target.id;
-            valor= event.target.value;            
+            valor = event.target.value;
             // si el click realizado correspondea alguna de las acciones procede a ejecutar la accion        
-            inputsExistentes = document.getElementsByClassName('beneficiario');            
+            inputsExistentes = document.getElementsByClassName('beneficiario');
             opcion = new opciones();
-            moduloData=event.target;
-            modulo=moduloData.dataset.modulo
-            
+            moduloData = event.target;
+            modulo = moduloData.dataset.modulo
+            console.log("click", idAccion);
 
             switch (idAccion) {
                 case "eliminarBeneficiarios":
@@ -38,12 +38,12 @@ export function detectaridBtn() {
                 case "EditarServicio":
                     opcion.editar();
                     break;
-                case "EliminarServicio":                    
-                    opcion.eliminar(valor,modulo);
+                case "EliminarServicio":
+                    opcion.eliminar(valor, modulo);
                     break;
                 case "importarExcel":
-                    archivo =document.getElementById('fileInput')
-                    opcion.importar(archivo,modulo);
+                    archivo = document.getElementById('fileInput')
+                    opcion.importar(archivo, modulo);
                     break;
                 default:
                     // Código para manejar otras acciones o casos no contemplados
@@ -80,8 +80,8 @@ export class opciones {
             })
             .catch(error => console.error('Error:', error));
     }
-    eliminar = (id, modulo) => {      
-        console.log("eliminar")  ;
+    eliminar = (id, modulo) => {
+        console.log(`${modulo}${id}`);
         axios.delete(`${modulo}${id}`)
             .then(response => {
                 alert('Servicio eliminado correctamente');
@@ -90,29 +90,29 @@ export class opciones {
             .catch(error => {
                 console.error('Hubo un error al eliminar el servicio:', error);
                 alert('No se pudo eliminar el servicio');
-                
+
             });
     }
-    editar=(id,modulo)=>{
-        console.log(id,modulo);
+    editar = (id, modulo) => {
+        console.log("editar", id, modulo);
     }
-    importar = (archivo,modulo) => {
-        
+    importar = (archivo, modulo) => {
+
         const formData = new FormData();
         formData.append('file', archivo.files[0]);
-        
+
         axios.post(modulo, formData, {
             headers: {
                 'Content-Type': 'multipart/form-data'
             }
         })
-        .then(response => {
-            console.log('Archivo importado con éxito:', response.data);
-            // Aquí puedes agregar lógica adicional después de una importación exitosa
-        })
-        .catch(error => {
-            console.error('Hubo un error al importar:', error);
-            alert('Error al importar el archivo');
-        });
+            .then(response => {
+                console.log('Archivo importado con éxito:', response.data);
+                // Aquí puedes agregar lógica adicional después de una importación exitosa
+            })
+            .catch(error => {
+                console.error('Hubo un error al importar:', error);
+                alert('Error al importar el archivo');
+            });
     }
 }

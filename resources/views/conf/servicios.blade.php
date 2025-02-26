@@ -1,4 +1,5 @@
 <x-header />
+@vite('resources/js/servicios/servicios.js')
 <div class="row m-2 p-2">
     <h1>Agregar Servicios</h1>
 </div>
