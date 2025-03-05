@@ -32,12 +32,16 @@ class ServiciosController extends Controller
     public function eliminarServicio($id)
     {
         $resultado = Servicios::destroy($id);
-        
-        if ($resultado) {
-            return response()->json(['mensaje' => 'Beneficiario eliminado correctamente'], 200);
+        try {
+            if ($resultado) {
+                return response()->json(['mensaje' => 'Servicio eliminado correctamente'], 200);
+            }
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['error' => 'Servicio no encontrado'], 404);
+        } catch (\Throwable $e) {
+            return response()->json(['code_error' => 500, 'error' => $e->getMessage()], 500);
         }
 
-        return response()->json(['error' => 'Beneficiario no encontrado'], 404);
     }
 
     public function edit($id)

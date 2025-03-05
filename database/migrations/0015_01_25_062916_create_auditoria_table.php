@@ -12,14 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('auditoria', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('user_id');  
+            $table->id();            
                       
             $table->string("detalle");
             $table->string("acciones");
             
-            $table->bigInteger('users_id')->unsigned();
-            $table->foreign("users_id")->references("id")->on("users");
+            $table->bigInteger('user_id')->unsigned();
+            $table->foreign("user_id")->references("id")->on("users");
 
             $table->timestamps();
             

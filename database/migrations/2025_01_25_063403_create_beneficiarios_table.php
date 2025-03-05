@@ -22,7 +22,8 @@ return new class extends Migration
             $table->string('cedula')->unique(); // Cédula (única)            
             $table->date('fecha_nacimiento'); // Fecha de nacimiento            
             $table->string('telefono'); // Teléfono (mejor como string para incluir códigos de área)            
-            $table->bigInteger('parentesco_id')->references('id')->on('parentescos');                                                                                     
+            $table->bigInteger('parentesco_id')->unsigned();
+            $table->foreign('parentesco_id')->references('id')->on('parentescos');                                                                                               
             $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');
             $table->enum('convenio',['ACTIVO','INACTIVO'])->default('INACTIVO');
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+import Swal from 'sweetalert2'
 
 export function detectaridBtn() {
     const botones = document.querySelectorAll(".btn")
@@ -18,8 +19,7 @@ export function detectaridBtn() {
             inputsExistentes = document.getElementsByClassName('beneficiario');
             opcion = new opciones();
             moduloData = event.target;
-            modulo = moduloData.dataset.modulo
-            console.log("click", idAccion);
+            modulo = moduloData.dataset.modulo            
 
             switch (idAccion) {
                 case "eliminarBeneficiarios":
@@ -81,16 +81,24 @@ export class opciones {
             .catch(error => console.error('Error:', error));
     }
     eliminar = (id, modulo) => {
-        console.log(`${modulo}${id}`);
+        
         axios.delete(`${modulo}${id}`)
             .then(response => {
-                alert('Servicio eliminado correctamente');
+                Swal.fire({
+                    title: 'eliminado exitosamente',
+                    text: 'se elimino correctamente el registro',
+                    icon: 'error'
+                });
                 location.reload();
             })
-            .catch(error => {
-                console.error('Hubo un error al eliminar el servicio:', error);
-                alert('No se pudo eliminar el servicio');
-
+            .catch(error => {               
+                if (error.status==500){
+                    Swal.fire({
+                        title: 'eliminacion fallida',
+                        text: 'No se pudo eliminar',
+                        icon: 'error'
+                    });                    
+                }                                                    
             });
     }
     editar = (id, modulo) => {

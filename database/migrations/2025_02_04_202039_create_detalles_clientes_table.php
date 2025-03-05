@@ -16,8 +16,9 @@ return new class extends Migration
             $table->bigInteger("cliente_id")->unsigned();
             $table->foreign("cliente_id")->references("id")->on("clientes");
             $table->string("cuenta");
-            $table->string("banco");
-            $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');
+            $table->bigInteger("banco_id")->unsigned();
+            $table->foreign("banco_id")->references("id")->on("bancos");
+            $table->enum('status',['ACTIVO','INACTIVO'])->default('ACTIVO');                
             $table->timestamps();
         });
     }
