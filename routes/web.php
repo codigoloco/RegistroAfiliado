@@ -30,7 +30,7 @@ Route::get('/BuscarAfiliados',  [AfiliadosController::class, 'index'])->name("bu
 //Eliminar servicio
 Route::delete('/AFiliados/delete/{id}',  [AfiliadosController::class, 'eliminarServicio'])->name('afiliados.destroy')->middleware('auth');
 //VistaEdicion
-Route::get('/AFiliados/{id}/editar', [AfiliadosController::class, 'edit'])->name('afiliados.editar')->middleware('auth');
+Route::get('/AFiliados/{id}/editar', [AfiliadosController::class, 'abrirEdicion'])->name('afiliados.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/AFiliados/{id}', [AfiliadosController::class, 'update'])->name('afiliados.actualizar')->middleware('auth');
 

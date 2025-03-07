@@ -79,7 +79,7 @@ class AfiliadosController extends Controller
                 DB::rollBack();
                 return redirect()->back()->with('Error', 'Falló al guardar el afiliado');
             }
-            
+
             // Crear o encontrar beneficiario
             $beneficiario = Beneficiarios::firstOrCreate(
                 ['cedula' => $request->CedulaBeneficiario],
@@ -131,6 +131,49 @@ class AfiliadosController extends Controller
                 ->withInput();
         }
     }
+    public function abrirEdicion($id)
+    {
+        $afiliado = Afiliados::select(
+            'afiliados.id',
+            'clientes.primer_nombre',
+            'clientes.segundo_nombre',
+            'clientes.primer_apellido',
+            'clientes.segundo_apellido',
+            'clientes.cedula',
+            'afiliados.created_at',
+            'ejecutivos.nombre as Nombre_Ejecutivo',
+            'ejecutivos.apellido as Apellido_Ejecutivo'
+        )
+            ->join('clientes', 'afiliados.cliente_id', '=', 'clientes.id')
+            ->join('servicios', 'afiliados.servicio_id', '=', 'servicios.id')
+            ->join('ejecutivos', 'afiliados.ejecutivo_id', '=', 'ejecutivos.id')
+            ->get();
 
-    
+        $afiliado_detalles = Afiliados::select(
+             
+            // 'nro_afiliado',
+            // 'primer_nombre',
+            // 'segundo_nombre',
+            // 'primer_apellido',
+            // 'segundo_apellido',
+            // 'fecha_nacimiento',
+            // 'nacionalidad',
+            // 'telefono'
+
+        )
+            ->join("detalles_afiliado" , "detalles_Afiliado.id", "=", "afiliados.id")
+            ->join("beneficiarios", "beneficiarios.id", "=", "detalles_afiliado.id")
+            ->get();
+
+        $parentescos = Parentescos::all();
+        $servicios = Servicios::all();
+        return view('afiliados.editarAfiliados', compact('afiliado', 'parentescos','afiliado_detalles'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $afiliado = Afiliados::findOrFail($id);
+        dd($request->all());
+        $afiliado->save();
+    }
 }

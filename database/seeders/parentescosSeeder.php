@@ -21,28 +21,20 @@ class parentescosSeeder extends Seeder
             'nombre' => 'Madre',
         ]);
         parentescos::factory()->create([
-            'nombre' => 'Abuelo',
-        ]);
+            'nombre' => 'Abuelo/a',
+        ]);        
         parentescos::factory()->create([
-            'nombre' => 'Abuela',
-        ]);
-        parentescos::factory()->create([
-            'nombre' => 'Tío',
+            'nombre' => 'Tío/a',
         ]);
         parentescos::factory()->create([
             'nombre' => 'Titular',
         ]);
         parentescos::factory()->create([
-            'nombre' => 'Hijo',
-        ]);
+            'nombre' => 'Hijo/a',
+        ]);        
         parentescos::factory()->create([
-            'nombre' => 'Hija',
+            'nombre' => 'Hermano/a',
         ]);
-        parentescos::factory()->create([
-            'nombre' => 'Hermano',
-        ]);
-        parentescos::factory()->create([
-            'nombre' => 'Hermana',
-        ]);
+        
     }
 }

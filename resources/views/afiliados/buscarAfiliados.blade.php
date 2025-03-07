@@ -30,8 +30,16 @@
                                 <td value='{{ $afiliado->cedula }}'> {{ $afiliado->cedula }}</td>
                                 <td>{{ $afiliado->primer_nombre }} {{ $afiliado->segundo_nombre }}</td>
                                 <td>{{ $afiliado->nombre_servicio }}</td>
-                                <td><button type='button' id='EditarServicio' class='btn btn-secondary'
-                                        data-modulo='afiliados/editar'>edicion</button></td>
+                                <td>
+                                    <a value="{{$afiliado->id}}" type="button" name="EditarAfiliado"
+                                        href="{{ route('afiliados.editar', $afiliado->id) }}" id="EditarAfiliado"
+                                        class="btn btn-primary ">
+                                        Editar
+                                    </a>
+                                    <!--
+                                        {{-- <button type='button' id='EditarServicio' class='btn btn-secondary'
+                                        data-modulo='afiliados/editar'>edicion</button></td> --}}
+                                    -->
 
                                 <!-- Agrega más columnas según sea necesario -->
                             </tr>
