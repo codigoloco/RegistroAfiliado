@@ -53,26 +53,31 @@ class AfiliadosController extends Controller
         DB::beginTransaction();
         try {
             // Obtener todos los datos del formulario en formato JSON
-            $formData = $request->all();
+            
 
-            $afiliado = new afiliados;
+            $afiliado = new Afiliados;
             $cliente = Clientes::where('cedula', '=', $request->CedulaTitular)->first();
             if ($cliente) {
                 $afiliado->cliente_id = $cliente->id;
             } else {
-                return  redirect()->route('afiliados')->with('Error', 'Cliente no encontrado');
+                return redirect()->route('afiliados')->with('Error', 'Cliente no encontrado');
             }
             $fechaActual = Carbon::now();
-            $fechaRenovacion = $fechaActual->addYear();
-            $fechaRenovacion = $fechaRenovacion->format('Y-m-d');
+            $fechaRenovacion = $fechaActual->addYear()->format('Y-m-d');
 
             $afiliado->cliente_id = $cliente->id;
             $afiliado->servicio_id = $request->tipoServicio;
             $afiliado->nro_afiliado = $request->tipoServicio . "-" . $request->CedulaTitular;
             $afiliado->fecha_renovacion = $fechaRenovacion;
-
             $afiliado->ejecutivo_id  = $request->ejecutivo;
             $afiliado->status = 1;
+
+            // Guardar el archivo subido en la carpeta 'archivos' en la raíz del proyecto            
+            if ($request->hasFile('formFile')) {
+                $documento = $request->file('formFile');
+                $nombreArchivo = $afiliado->nro_afiliado;                
+                $documento->move(public_path('archivos'), $nombreArchivo);                
+            }
 
             $savedAfiliado = $afiliado->save();
             if (!$savedAfiliado) {
@@ -150,7 +155,7 @@ class AfiliadosController extends Controller
             ->get();
 
         $afiliado_detalles = Afiliados::select(
-             
+
             // 'nro_afiliado',
             // 'primer_nombre',
             // 'segundo_nombre',
@@ -161,13 +166,13 @@ class AfiliadosController extends Controller
             // 'telefono'
 
         )
-            ->join("detalles_afiliado" , "detalles_Afiliado.id", "=", "afiliados.id")
+            ->join("detalles_afiliado", "detalles_Afiliado.id", "=", "afiliados.id")
             ->join("beneficiarios", "beneficiarios.id", "=", "detalles_afiliado.id")
             ->get();
 
         $parentescos = Parentescos::all();
         $servicios = Servicios::all();
-        return view('afiliados.editarAfiliados', compact('afiliado', 'parentescos','afiliado_detalles'));
+        return view('afiliados.editarAfiliados', compact('afiliado', 'parentescos', 'afiliado_detalles'));
     }
 
     public function update($id, Request $request)

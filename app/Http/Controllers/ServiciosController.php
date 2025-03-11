@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Servicios;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use PhpOffice\PhpSpreadsheet\Calculation\Web\Service;
+
+use function Pest\Laravel\json;
 
 class ServiciosController extends Controller
 {
@@ -17,6 +20,12 @@ class ServiciosController extends Controller
     {
         $servicios = Servicios::all();
         return view('conf.servicios', compact("servicios"));
+    }
+    
+    public function BuscarServicio($id)
+    {
+        $servicio =Servicios::find($id);
+        return response()->json(['Servicio'=>$servicio]);
     }
 
     public function storeServicios(Request $request)

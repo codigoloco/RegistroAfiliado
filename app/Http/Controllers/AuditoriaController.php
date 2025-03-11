@@ -10,4 +10,5 @@ class AuditoriaController extends Controller
     function inicio(){
         return view('conf.auditoria');
     }
+    
 }

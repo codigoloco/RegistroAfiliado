@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AfiliadosController;
 use App\Http\Controllers\AuditoriaController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\BancosController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -68,6 +69,8 @@ Route::delete('/servicios/delete/{id}',  [ServiciosController::class, 'eliminarS
 Route::get('/servicios/{id}/editar', [ServiciosController::class, 'edit'])->name('servicios.editar')->middleware('auth');
 // Ruta para procesar la actualización del servicio
 Route::put('/servicios/{id}', [ServiciosController::class, 'update'])->name('servicios.actualizar')->middleware('auth');
+//BuscarServicioCantidad
+Route::get('/servicios/buscar/{id}', [ServiciosController::class, 'BuscarServicio'])->name('servicios.buscar')->middleware('auth');
 
 //Parentescos
 //vista Parentescos
@@ -104,13 +107,16 @@ Route::post('/convenios/create',  [ConveniosController::class, 'storeConvenios']
     
 
 
+// Ruta para procesar el registro de usuario
 
+Route::get('/registrar_usuario', [UserController::class, 'RegistrarUsuario'])->name('usuarios')->middleware('auth');
+//VistaRegistro
+// Route::get('/registrar_usuario', [UserController::class, 'CrearRegistro'])->name('usuarios.vista')->middleware('auth');
+//Registro
+Route::post('/registrar_usuario', [UserController::class, 'register'])->name('registrar_usuario.store')->middleware('auth');
 
+route::get('/RegistrarUsuario',  [UserController::class, 'CrearRegistro'])->name('RegistrarUsuario')->middleware('auth');
 
-
-
-
-Route::get('/usuarios',  [UserController::class, 'inicio'])->name('usuarios')->middleware('auth');
 
 
 Route::get('/auditoria',  [AuditoriaController::class, 'inicio'])->name('auditoria')->middleware('auth');

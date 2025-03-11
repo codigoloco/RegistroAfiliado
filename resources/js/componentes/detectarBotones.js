@@ -19,8 +19,8 @@ export function detectaridBtn() {
             inputsExistentes = document.getElementsByClassName('beneficiario');
             opcion = new opciones();
             moduloData = event.target;
-            modulo = moduloData.dataset.modulo            
-
+            modulo = moduloData.dataset.modulo      
+            
             switch (idAccion) {
                 case "eliminarBeneficiarios":
                     if (inputsExistentes.length != 1) {
@@ -28,7 +28,9 @@ export function detectaridBtn() {
                     }
                     break;
                 case "AgregarBeneficiarios":
-                    if (inputsExistentes.length < 6) {
+                       
+                    let maximo= document.querySelector('#tipoServicio').value;
+                    if (inputsExistentes.length < parseInt(maximo)) {
                         opcion.AddAfiliados();
                     }
                     break;
@@ -55,7 +57,8 @@ export function detectaridBtn() {
 
 export class opciones {
 
-    AddAfiliados = () => {
+    AddAfiliados = () => {        
+
         let container = document.getElementById('beneficiarios-container');
         let beneficiario = container.querySelector('.beneficiario').cloneNode(true);
         let inputs = beneficiario.querySelectorAll('input');
@@ -70,16 +73,13 @@ export class opciones {
         let beneficiario = container.querySelector('.beneficiario');
         container.removeChild(beneficiario);
     }
-
-    OBtenerAFiliados = () => {
-        fetch('/afiliados/all') // Asegúrate de que la ruta coincida con la definida en Laravel
-            .then(response => response.json())
-            .then(data => {
-                console.log(data); // Muestra los datos en la consola
-                // Aquí puedes procesar los datos para mostrarlos en tu interfaz
+    ObtenerServicios =(valor)=>{	        
+        axios.get('/servicios/buscar/'+valor)
+            .then(response => {
+                return  response.data;
             })
-            .catch(error => console.error('Error:', error));
     }
+
     eliminar = (id, modulo) => {
         
         axios.delete(`${modulo}${id}`)

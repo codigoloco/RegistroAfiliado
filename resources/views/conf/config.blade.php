@@ -19,7 +19,7 @@
             </div>
             <div class="card-body">
                 <h5 class="card-title">  Gestionar Usuarios</h5>
-                <a class="btn btn-secondary" href="{{ route('usuarios') }}">Ingresar</a>
+                <a class="btn btn-secondary" href="{{ route("usuarios") }}">Ingresar</a>
             </div>
         </div>
     </div>
