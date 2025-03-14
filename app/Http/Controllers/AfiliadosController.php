@@ -178,9 +178,8 @@ class AfiliadosController extends Controller
     }
 
     public function update($id, Request $request)
-    {
-        $afiliado = Afiliados::findOrFail($id);
-        dd($request->all());
+    {   $afiliado = Afiliados::findOrFail($id);
+        
         $afiliado->save();
     }
 }

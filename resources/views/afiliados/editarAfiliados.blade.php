@@ -17,7 +17,7 @@
                         </div>
                     @endif
 
-                    <form action="" method="POST">
+                    <form action="rourte{{ 'afiliados.actualizar' }}{{  }}" method="put">
                         @csrf
                         @method('PUT') <!-- Agregar método PUT para la actualización -->
                         <div class="row justify-content-center m-2">
