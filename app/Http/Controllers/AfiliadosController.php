@@ -25,7 +25,7 @@ class AfiliadosController extends Controller
 
     public function index()
     {
-        
+
 
         $Afiliados = Afiliados::select(
             'afiliados.*',
@@ -51,11 +51,11 @@ class AfiliadosController extends Controller
         return view('afiliados.afiliado', compact("servicios", "parentescos", "ejecutivos"));
     }
     public function storeAFiliados(Request $request)
-    {   
+    {
         DB::beginTransaction();
         try {
             // Obtener todos los datos del formulario en formato JSON
-            
+            $formData = $request->all();
 
             $afiliado = new Afiliados;
             $cliente = Clientes::where('cedula', '=', $request->CedulaTitular)->first();
@@ -74,11 +74,11 @@ class AfiliadosController extends Controller
             $afiliado->ejecutivo_id  = $request->ejecutivo;
             $afiliado->status = 1;
 
-            // Guardar el archivo subido en la carpeta 'archivos' en la raíz del proyecto            
+            // Guardar el archivo subido en la carpeta 'archivos' en la raíz del proyecto
             if ($request->hasFile('formFile')) {
                 $documento = $request->file('formFile');
-                $nombreArchivo = $afiliado->nro_afiliado;                
-                $documento->move(public_path('archivos'), $nombreArchivo);                
+                $nombreArchivo = time() . '_' . $documento->getClientOriginalName();
+                $documento->move(public_path('archivos'), $nombreArchivo);
             }
 
             $savedAfiliado = $afiliado->save();
