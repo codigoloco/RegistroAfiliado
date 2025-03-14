@@ -30,12 +30,12 @@ parentesco.addEventListener('change', function () {
             try {
                 const response = await axios.get(`/clientes/get/${id_cliente}`);
                 let clientes = response.data; // Aquí ya tienes los datos
-
+                
                 cedula_beneficiario.value = String(clientes.cedula);
                 primer_nombre.value = String(clientes.primer_nombre);
-                segundo_nombre.value = String(clientes.segundo_nombre)=null? String(clientes.segundo_nombre): '';
+                segundo_nombre.value = String(clientes.segundo_nombre)==null? String(clientes.segundo_nombre): '';
                 primer_apellido.value = String(clientes.primer_apellido);
-                segundo_apellido.value = String(clientes.segundo_apellido=null? String(clientes.segundo_apellido): '');
+                segundo_apellido.value = String(clientes.segundo_apellido==null? String(clientes.segundo_apellido): '');
                 fecha_nacimiento.value = String(clientes.fecha_nacimiento);
                 telefono.value = String(clientes.telefono);
                 nacionalidad.value = String(clientes.nacionalidad);

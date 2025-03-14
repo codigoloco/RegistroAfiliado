@@ -56,18 +56,18 @@
             </div>
         </div>
     </div>
-    <div class="col-3 p-2 m-2 g-2">
+    <div class="col-3 p-2 m-2 g-2 d-none">
         <div class="card text-center">
             <div class="card-header">
                 Configuracion
             </div>
-            <div class="card-body">
+            <div class="card-body d-none">
                 <h5 class="card-title"> Gestionar Bancos </h5>
                 <a class="btn btn-secondary" href="{{ route('config.Bancos') }}">Ingresar</a>
             </div>
         </div>
     </div>
-    <div class="col-3 p-2 m-2 g-2">
+    <div class="col-3 p-2 m-2 g-2 d-none">
         <div class="card text-center">
             <div class="card-header">
                 Convenios

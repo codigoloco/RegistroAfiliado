@@ -25,6 +25,8 @@ class AfiliadosController extends Controller
 
     public function index()
     {
+        
+
         $Afiliados = Afiliados::select(
             'afiliados.*',
             'servicios.nombre as nombre_servicio',
@@ -49,7 +51,7 @@ class AfiliadosController extends Controller
         return view('afiliados.afiliado', compact("servicios", "parentescos", "ejecutivos"));
     }
     public function storeAFiliados(Request $request)
-    {
+    {   
         DB::beginTransaction();
         try {
             // Obtener todos los datos del formulario en formato JSON
